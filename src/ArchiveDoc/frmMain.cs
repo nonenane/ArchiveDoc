@@ -16,5 +16,15 @@ namespace ArchiveDoc
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new ArchiveDocaTypeDoc.frmList().ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new ArchiveDocAddDoc.frmAddDoc() { Text = "Добавление документа" }.ShowDialog();
+        }
     }
 }

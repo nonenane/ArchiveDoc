@@ -21,3 +21,4 @@ D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocaTypeDoc.dll.confi
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.dll
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.frmMain.resources

@@ -5,16 +5,16 @@ GO
 -- =============================================
 -- Author:		Sporykhin G.Y.
 -- Create date: 2020-04-25
--- Description:	Получение справочника типов документов
+-- Description:	Получение должностей
 -- =============================================
-CREATE PROCEDURE [ArchiveDoc].[getTypeDoc]		 
+CREATE PROCEDURE [ArchiveDoc].[spg_getPost]		 
 AS
 BEGIN
 	SET NOCOUNT ON;
 
 SELECT 
-	t.id,t.npp,t.cName,t.ViewAdd,t.ViewArchive,t.isActive 
+	p.id,p.cName,p.isActive
 FROM 
-	[ArchiveDoc].[s_TypeDoc] t
+	[ArchiveDoc].[s_Posts] p
 
 END

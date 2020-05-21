@@ -31,12 +31,12 @@ namespace ArchiveDoc
                     Logging.StopFirstLevel();
                     
                     //Application.Run(new ArchiveDocaTypeDoc.frmList());
-                    Application.Run(new ArchiveDocAddDoc.frmAddDoc(){Text = "Добавление документа"});
+                    //Application.Run(new ArchiveDocAddDoc.frmAddDoc(){Text = "Добавление документа"});
                     //Application.Run(new FeedBack.frmList());
                     //Application.Run(new WebSites.frmList());
                     //Application.Run(new Report.frmReport());
 
-                    //Application.Run(new frmMain());
+                    Application.Run(new frmMain());
 
                     Logging.StartFirstLevel(2);
                     Logging.Comment("Выход из программы");

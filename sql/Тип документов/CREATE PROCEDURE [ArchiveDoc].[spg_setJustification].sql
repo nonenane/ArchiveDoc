@@ -7,7 +7,7 @@ GO
 -- Create date: 2020-04-25
 -- Description:	Переод документов в архив
 -- =============================================
-ALTER PROCEDURE [ArchiveDoc].[setJustification]		 
+CREATE PROCEDURE [ArchiveDoc].[spg_setJustification]		 
 	@id_TypeDoc int,
 	@id_user int, 
 	@ArchiveComment varchar(max),

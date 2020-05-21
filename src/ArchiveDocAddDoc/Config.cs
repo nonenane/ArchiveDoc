@@ -70,4 +70,12 @@ namespace ArchiveDocAddDoc
             if (_this.InvokeRequired) { _this.Invoke(d); } else { d(); }
         }
     }
+
+    public class docInfo
+    {
+        public string nameDoc { set; get; }
+        public string fileName { set; get; }
+        public string fileNameWithOutExtension { set; get; }
+        public int id_doc { set; get; }
+    }
 }

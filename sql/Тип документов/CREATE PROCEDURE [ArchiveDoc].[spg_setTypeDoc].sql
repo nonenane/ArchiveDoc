@@ -7,7 +7,7 @@ GO
 -- Create date: 2020-04-25
 -- Description:	«апись справочника типов документов
 -- =============================================
-ALTER PROCEDURE [ArchiveDoc].[setTypeDoc]		 
+CREATE PROCEDURE [ArchiveDoc].[spg_setTypeDoc]		 
 	@id int,
 	@cName varchar(max),
 	@npp int,

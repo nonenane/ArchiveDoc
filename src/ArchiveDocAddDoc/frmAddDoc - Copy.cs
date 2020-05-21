@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ArchiveDocAddDoc
 {
-    public partial class frmAddDoc : Form
+    public partial class frmAddDoc_copy : Form
     {
         public DataRowView row { set; private get; }
 
@@ -23,8 +23,7 @@ namespace ArchiveDocAddDoc
         private int id = 0;
         private string fileName="";
         private byte[] fileBytes=null;
-        DataTable dtPostVsDeps;
-        public frmAddDoc()
+        public frmAddDoc_copy()
         {
             InitializeComponent();
             if (Config.hCntMain == null)
@@ -33,7 +32,6 @@ namespace ArchiveDocAddDoc
             ToolTip tp = new ToolTip();
             tp.SetToolTip(btClose, "Выход");
             tp.SetToolTip(btSave, "Сохранить");
-            tp.SetToolTip(btAddDoc, "Добавить документ");
 
             openFileDialog1.InitialDirectory = "c:\\";
             //openFileDialog1.FilterIndex = 2;
@@ -44,8 +42,7 @@ namespace ArchiveDocAddDoc
             this.rbDataBase.AutoCheck = false;
             this.rbPC.Click += new System.EventHandler(this.checkBox1_Click);
             this.rbDataBase.Click += new System.EventHandler(this.checkBox1_Click);
-            
-            dgvData.AutoGenerateColumns = false;
+
         }
 
         private void btClose_Click(object sender, EventArgs e)
@@ -56,9 +53,6 @@ namespace ArchiveDocAddDoc
         private void Form1_Load(object sender, EventArgs e)
         {
             get_typeDoc();
-            init_depsCombobox();
-            init_postCombobox();
-            init_postVsDeps();
         }
 
         private void btAddDoc_Click(object sender, EventArgs e)
@@ -79,10 +73,7 @@ namespace ArchiveDocAddDoc
                 frmSelectDocuments frmSelDoc = new frmSelectDocuments() { Text = "Выбрать документ" };
                 if (DialogResult.OK == frmSelDoc.ShowDialog())
                 {
-                    docInfo dInfo = frmSelDoc.setDocInfo();
-
-                    fileName = dInfo.fileName;
-                    tbFileName.Text = dInfo.nameDoc;
+                    frmSelDoc.setDocInfo();
                 }
             }
         }
@@ -115,20 +106,7 @@ namespace ArchiveDocAddDoc
                 return;
             }
 
-            if (dtPostVsDeps == null) { MessageBox.Show("Нет данных по должностям.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
-            if (dtPostVsDeps.Rows.Count == 0) { MessageBox.Show("Нет данных по должностям.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
-            EnumerableRowCollection<DataRow> rowCollect = dtPostVsDeps.AsEnumerable().Where(r => r.Field<bool>("isSelect"));
-            if (rowCollect.Count() == 0) { MessageBox.Show("Необходимо выбрать должность.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
-
-
-            MessageBoxManager.Unregister();
-            MessageBoxManager.Yes = "Новый";
-            MessageBoxManager.No= "Ознакомление";
-            MessageBoxManager.Cancel = "Отмена";
-            MessageBoxManager.Register();
-            DialogResult dlgResult = MessageBox.Show("Выберите статус добавляемого документа:", "Добавление документа", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
-            MessageBoxManager.Unregister();
 
             Task<DataTable> task = Config.hCntMain.setDocuments(id, tbNameDoc.Text.Trim(), tbFileName.Text, fileBytes, (int)cmbTypeDoc.SelectedValue, false, 0);
             task.Wait();
@@ -203,6 +181,7 @@ namespace ArchiveDocAddDoc
             cmbTypeDoc.SelectedIndex = -1;
         }
 
+
         private void checkBox1_Click(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
@@ -226,80 +205,14 @@ namespace ArchiveDocAddDoc
                     fileBytes = null;
                     tbFileName.Text = "";
                     //radioButton.Checked = true;
-                    if (rbName.Equals(rbDataBase.Name)) { radioButton.Checked = true; rbPC.Checked = false; }// btAddDoc.Enabled = false; }
-                    else if (rbName.Equals(rbPC.Name)) { radioButton.Checked = true; rbDataBase.Checked = false; }// btAddDoc.Enabled = true; }
+                    if (rbName.Equals(rbDataBase.Name)) { radioButton.Checked = true; rbPC.Checked = false; }
+                    else if (rbName.Equals(rbPC.Name)) { radioButton.Checked = true; rbDataBase.Checked = false; }
                 }
             }
             //else
             //{
             //    radioButton.Checked = false;
             //}
-        }
-
-        private void init_depsCombobox()
-        {
-            DataTable dtDeps = null;
-            Task<DataTable> task = Config.hCntMain.getDeps(true);
-            task.Wait();
-            if (task.Result != null && task.Result.Rows.Count > 0)
-            { dtDeps = task.Result.Copy(); task = null; }
-
-            cmbDeps.DataSource = dtDeps;
-            cmbDeps.DisplayMember = "name";
-            cmbDeps.ValueMember = "id";
-        }
-
-        private void init_postCombobox()
-        {
-            DataTable dtPost = null;
-            Task<DataTable> task = Config.hCntMain.getPost(true);
-            task.Wait();
-            if (task.Result != null && task.Result.Rows.Count > 0)
-            { dtPost = task.Result.Copy(); task = null; }
-
-            cmbPost.DataSource = dtPost;
-            cmbPost.DisplayMember = "cName";
-            cmbPost.ValueMember = "id";
-        }
-
-        private void init_postVsDeps()
-        {
-            Task<DataTable> task = Config.hCntMain.getPostVsDeps();
-            task.Wait();
-
-            dtPostVsDeps = task.Result;
-            setFilter();
-            dgvData.DataSource = dtPostVsDeps;
-        }
-
-        private void setFilter()
-        {
-            if (dtPostVsDeps == null || dtPostVsDeps.Rows.Count == 0) { //btSave.Enabled = false;
-                return; }
-
-            try
-            {
-                string filter = "";
-                //if (tbNameDoc.Text.Trim().Length > 0)
-                  //  filter += (filter.Trim().Length > 0 ? " and " : "") + $"cName like '%{tbNameDoc.Text.Trim()}%' ";
-
-                if ((int)cmbPost.SelectedValue != 0)
-                    filter += (filter.Trim().Length > 0 ? " and " : "") + $"id_Posts  = {cmbPost.SelectedValue}";
-
-                if (int.Parse(cmbDeps.SelectedValue.ToString()) != 0)
-                    filter += (filter.Trim().Length > 0 ? " and " : "") + $"id_Departments  = {cmbDeps.SelectedValue}";
-
-                dtPostVsDeps.DefaultView.RowFilter = filter;
-                dtPostVsDeps.DefaultView.Sort = "nameDeps asc";
-            }
-            catch
-            {
-                dtPostVsDeps.DefaultView.RowFilter = "id = - 1";
-            }
-            finally
-            {
-                //btSave.Enabled = dtPostVsDeps.DefaultView.Count != 0;
-            }
         }
 
     }

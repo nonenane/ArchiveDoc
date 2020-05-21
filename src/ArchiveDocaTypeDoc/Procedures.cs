@@ -29,7 +29,7 @@ namespace ArchiveDocaTypeDoc
         {
             ap.Clear();
 
-            DataTable dtResult = executeProcedure("[ArchiveDoc].[getTypeDoc]",
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getTypeDoc]",
                  new string[0] { },
                  new DbType[0] { }, ap);
 
@@ -64,7 +64,7 @@ namespace ArchiveDocaTypeDoc
             ap.Add(result);
             ap.Add(isDel);
 
-            DataTable dtResult = executeProcedure("[ArchiveDoc].[setTypeDoc]",
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_setTypeDoc]",
                  new string[9] { "@id", "@cName", "@npp", "@ViewAdd", "@ViewArchive", "@isActive", "@id_user", "@result", "@isDel" },
                  new DbType[9] { DbType.Int32, DbType.String, DbType.Int32, DbType.Boolean, DbType.Boolean, DbType.Boolean, DbType.Int32, DbType.Int32, DbType.Boolean }, ap);
 
@@ -92,7 +92,7 @@ namespace ArchiveDocaTypeDoc
             ap.Add(ArchiveComment);
             ap.Add(BaseDocumentsArchive);
 
-            DataTable dtResult = executeProcedure("[ArchiveDoc].[setJustification]",
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_setJustification]",
                  new string[4] { "@id_TypeDoc", "@id_user", "@ArchiveComment", "@BaseDocumentsArchive" },
                  new DbType[4] { DbType.Int32, DbType.Int32, DbType.String, DbType.String }, ap);
 
