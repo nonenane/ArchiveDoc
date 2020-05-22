@@ -1,0 +1,17 @@
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\ArchiveDocJournalStatusHistory.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\ArchiveDocJournalStatusHistory.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\ArchiveDocJournalStatusHistory.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.csprojAssemblyReference.cache
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.Properties.Resources.resources
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.csproj.GenerateResource.cache
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.csproj.CoreCompileInputs.cache
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\Framework.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\Interop.Excel.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\EPPlus.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\Interop.WIA.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\Interop.Microsoft.Office.Core.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\stdole.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.csproj.CopyComplete
+D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.frmHistory.resources

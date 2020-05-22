@@ -96,11 +96,16 @@ namespace ArchiveDocAddDoc
             if (dgvData.CurrentRow.Index == -1) return;
 
             int indexRow = dgvData.CurrentRow.Index;
+            int id_doc = (int)dtData.DefaultView[indexRow]["id"];
+
+            Task<DataTable> task = Config.hCntMain.getDocumentBytes(id_doc);
+            task.Wait();
+            if (task.Result == null || task.Result.Rows.Count == 0 || task.Result.Rows[0]["DocFile"] == DBNull.Value) return;
 
             docInfo.nameDoc = (string)dtData.DefaultView[indexRow]["cName"];
             docInfo.fileName = (string)dtData.DefaultView[indexRow]["FileName"];
             docInfo.fileNameWithOutExtension = Path.GetFileNameWithoutExtension((string)dtData.DefaultView[indexRow]["FileName"]);
-            docInfo.id_doc = (int)dtData.DefaultView[indexRow]["id"];
+            docInfo.fileBytes = (byte[])task.Result.Rows[0]["DocFile"];
 
             this.DialogResult = DialogResult.OK;
         }

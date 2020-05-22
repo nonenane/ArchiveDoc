@@ -45,12 +45,12 @@
             this.btClose = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.lNameDoc = new System.Windows.Forms.Label();
-            this.tbNameDoc = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.cDep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lNameDoc = new System.Windows.Forms.Label();
+            this.tbNameDoc = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,6 +147,7 @@
             this.cmbDeps.Name = "cmbDeps";
             this.cmbDeps.Size = new System.Drawing.Size(173, 21);
             this.cmbDeps.TabIndex = 1;
+            this.cmbDeps.SelectionChangeCommitted += new System.EventHandler(this.cmbDeps_SelectionChangeCommitted);
             // 
             // lPost
             // 
@@ -165,6 +166,7 @@
             this.cmbPost.Name = "cmbPost";
             this.cmbPost.Size = new System.Drawing.Size(291, 21);
             this.cmbPost.TabIndex = 1;
+            this.cmbPost.SelectionChangeCommitted += new System.EventHandler(this.cmbDeps_SelectionChangeCommitted);
             // 
             // btClose
             // 
@@ -218,27 +220,6 @@
             this.dgvData.Size = new System.Drawing.Size(591, 415);
             this.dgvData.TabIndex = 5;
             // 
-            // lNameDoc
-            // 
-            this.lNameDoc.AutoSize = true;
-            this.lNameDoc.Location = new System.Drawing.Point(47, 92);
-            this.lNameDoc.Name = "lNameDoc";
-            this.lNameDoc.Size = new System.Drawing.Size(58, 13);
-            this.lNameDoc.TabIndex = 0;
-            this.lNameDoc.Text = "Документ";
-            // 
-            // tbNameDoc
-            // 
-            this.tbNameDoc.Location = new System.Drawing.Point(111, 88);
-            this.tbNameDoc.MaxLength = 150;
-            this.tbNameDoc.Name = "tbNameDoc";
-            this.tbNameDoc.Size = new System.Drawing.Size(454, 20);
-            this.tbNameDoc.TabIndex = 3;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // cDep
             // 
             this.cDep.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -264,6 +245,27 @@
             this.cSelect.MinimumWidth = 45;
             this.cSelect.Name = "cSelect";
             this.cSelect.Width = 45;
+            // 
+            // lNameDoc
+            // 
+            this.lNameDoc.AutoSize = true;
+            this.lNameDoc.Location = new System.Drawing.Point(47, 92);
+            this.lNameDoc.Name = "lNameDoc";
+            this.lNameDoc.Size = new System.Drawing.Size(58, 13);
+            this.lNameDoc.TabIndex = 0;
+            this.lNameDoc.Text = "Документ";
+            // 
+            // tbNameDoc
+            // 
+            this.tbNameDoc.Location = new System.Drawing.Point(111, 88);
+            this.tbNameDoc.MaxLength = 150;
+            this.tbNameDoc.Name = "tbNameDoc";
+            this.tbNameDoc.Size = new System.Drawing.Size(454, 20);
+            this.tbNameDoc.TabIndex = 3;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmAddDoc
             // 

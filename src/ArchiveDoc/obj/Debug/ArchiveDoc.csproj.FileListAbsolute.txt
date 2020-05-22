@@ -22,3 +22,16 @@ D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.dll
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.dll.config
 D:\Работа\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.frmMain.resources
+D:\Работа\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.post.frmAdd.resources
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocJournalStatusHistory.dll
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocJournalStatusHistory.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocJournalStatusHistory.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocExtensionsFile.dll
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocExtensionsFile.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocExtensionsFile.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocSettings.dll
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocSettings.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocSettings.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.dll
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.dll.config

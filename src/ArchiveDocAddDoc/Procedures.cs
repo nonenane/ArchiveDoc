@@ -154,6 +154,21 @@ namespace ArchiveDocAddDoc
             return dtResult;
         }
 
+        /// <summary>Получение тела документаПолучение списка документов для добавления в документ
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>Таблица с данными</returns>        
+        public async Task<DataTable> getDocumentBytes(int id)
+        {
+            ap.Clear();
+            ap.Add(id);
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getDocumentBytes]",
+                 new string[1] { "@id" },
+                 new DbType[1] { DbType.Int32 }, ap);
+
+            return dtResult;
+        }
 
         #region "Добавление документа"
 
@@ -190,7 +205,57 @@ namespace ArchiveDocAddDoc
             return dtResult;
         }
 
+        /// <summary>
+        /// Запись документа в базу
+        /// </summary>
+        /// <param name="id">Код записи</param>
+        /// <param name="cName">Наименование </param>
+        /// <param name="npp">Аббревиатура</param>
+        /// <param name="ViewArchive"></param>
+        /// <param name="ViewAdd"></param>
+        /// <param name="isActive">признак активности записи</param>  
+        /// <param name="isDel">Признак удаления записи</param>
+        /// <param name="result">Результирующая для проверки</param>
+        /// <returns>Таблица с данными</returns>
+        /// <param name="id">код созданной записи</param>
+
+        public async Task<DataTable> setDocuments_vs_DepartmentsPosts(int id, string ArchiveComment, string BaseDocumentsArchive, int id_DepartmentsPosts, int id_Documents,int id_Status,bool isBrowse, bool isDel, int result)
+        {
+            ap.Clear();
+            ap.Add(id);
+            ap.Add(ArchiveComment);
+            ap.Add(BaseDocumentsArchive);
+            ap.Add(id_DepartmentsPosts);
+            ap.Add(id_Documents);
+            ap.Add(id_Status);
+            ap.Add(isBrowse);
+            ap.Add(Nwuram.Framework.Settings.User.UserSettings.User.Id);
+            ap.Add(result);
+            ap.Add(isDel);
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_setDocuments_vs_DepartmentsPosts]",
+                 new string[10] { "@id", "@ArchiveComment","@BaseDocumentsArchive", "@id_DepartmentsPosts", "@id_Documents", "@id_Status", "@isBrowse", "@id_user", "@result", "@isDel" },
+                 new DbType[10] { DbType.Int32, DbType.String, DbType.String, DbType.Int32, DbType.Int32, DbType.Int32,DbType.Boolean, DbType.Int32, DbType.Int32, DbType.Boolean }, ap);
+
+            return dtResult;
+        }
+
         #endregion
-        
+
+        /// <summary>
+        /// Получение расширений файлов
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>Таблица с данными</returns>        
+        public async Task<DataTable> getTypeFile()
+        {
+            ap.Clear();
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getTypeFile]",
+                 new string[0] { },
+                 new DbType[0] { }, ap);
+
+            return dtResult;
+        }
     }
 }

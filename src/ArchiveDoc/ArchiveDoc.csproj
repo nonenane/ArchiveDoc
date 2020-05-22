@@ -61,11 +61,20 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="post\frmAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="post\frmAdd.Designer.cs">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procedures.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="post\frmAdd.resx">
+      <DependentUpon>frmAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,6 +128,22 @@
     <ProjectReference Include="..\ArchiveDocaTypeDoc\ArchiveDocaTypeDoc.csproj">
       <Project>{59300f7e-b9fc-43a9-bb59-86526a5be214}</Project>
       <Name>ArchiveDocaTypeDoc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArchiveDocExtensionsFile\ArchiveDocExtensionsFile.csproj">
+      <Project>{16e59f20-1694-4cc6-936c-7508f1665bbd}</Project>
+      <Name>ArchiveDocExtensionsFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArchiveDocJournalStatusHistory\ArchiveDocJournalStatusHistory.csproj">
+      <Project>{185ead00-8278-49a1-a352-58a389b01c32}</Project>
+      <Name>ArchiveDocJournalStatusHistory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArchiveDocReport\ArchiveDocReport.csproj">
+      <Project>{1e64707e-f484-4afa-8364-5302979e6ef8}</Project>
+      <Name>ArchiveDocReport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArchiveDocSettings\ArchiveDocSettings.csproj">
+      <Project>{a4580645-59a1-4b6c-b9cf-05b2ad97446c}</Project>
+      <Name>ArchiveDocSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

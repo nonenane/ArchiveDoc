@@ -59,13 +59,13 @@ namespace ArchiveDocAddDoc
             init_depsCombobox();
             init_postCombobox();
             init_postVsDeps();
+            init_extentsion();
         }
 
         private void btAddDoc_Click(object sender, EventArgs e)
         {
             if (rbPC.Checked)
-            {
-                openFileDialog1.Filter = "Image Files (JPG,PNG,GIF)|*.JPG;*.PNG;*.GIF|Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            {                
                 if (DialogResult.OK == openFileDialog1.ShowDialog())
                 {
                     fileName =  Path.GetFileName(openFileDialog1.FileName);
@@ -83,6 +83,7 @@ namespace ArchiveDocAddDoc
 
                     fileName = dInfo.fileName;
                     tbFileName.Text = dInfo.nameDoc;
+                    fileBytes = dInfo.fileBytes;
                 }
             }
         }
@@ -129,6 +130,10 @@ namespace ArchiveDocAddDoc
             MessageBoxManager.Register();
             DialogResult dlgResult = MessageBox.Show("Выберите статус добавляемого документа:", "Добавление документа", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
             MessageBoxManager.Unregister();
+
+            if (DialogResult.Cancel == dlgResult) return;
+            int id_status = 1;
+            if (DialogResult.No == dlgResult) id_status = 2;
 
             Task<DataTable> task = Config.hCntMain.setDocuments(id, tbNameDoc.Text.Trim(), tbFileName.Text, fileBytes, (int)cmbTypeDoc.SelectedValue, false, 0);
             task.Wait();
@@ -178,6 +183,13 @@ namespace ArchiveDocAddDoc
 
                 Logging.StopFirstLevel();
             }
+
+            foreach (DataRow row in rowCollect)
+            {
+                task = Config.hCntMain.setDocuments_vs_DepartmentsPosts(0, "", "", (int)row["id"], id, id_status, false, false, 0);
+                task.Wait();
+            }
+
 
 
             isEditData = false;
@@ -262,6 +274,11 @@ namespace ArchiveDocAddDoc
             cmbPost.ValueMember = "id";
         }
 
+        private void cmbDeps_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            setFilter();
+        }
+
         private void init_postVsDeps()
         {
             Task<DataTable> task = Config.hCntMain.getPostVsDeps();
@@ -302,5 +319,41 @@ namespace ArchiveDocAddDoc
             }
         }
 
+        private void init_extentsion()
+        {
+            Task<DataTable> task = Config.hCntMain.getTypeFile();
+            task.Wait();
+
+            if (task.Result == null || task.Result.Rows.Count == 0)
+                //openFileDialog1.Filter = "Image Files (JPG,PNG,GIF)|*.JPG;*.PNG;*.GIF|Text files(*.txt)|*.txt|All files(*.*)|*.*";
+                openFileDialog1.Filter = "Image Files (JPG,PNG,GIF)|*.JPG;*.PNG;*.GIF";
+            else
+            {
+                var groupeExtension = task.Result.AsEnumerable()
+                        .Where(r=>r.Field<bool>("isActive"))
+                        .GroupBy(r => new { id_GroupFile = r.Field<int>("id_GroupFile"), cName = r.Field<string>("cName") })
+                        .Select(s => new
+                        {
+                            s.Key.cName,
+                            s.Key.id_GroupFile
+                        });
+
+                string filterExtension = "";
+
+                foreach (var gGroup in groupeExtension)
+                {
+                    filterExtension += $"{gGroup.cName}|";
+                    EnumerableRowCollection<DataRow> rowCollect = task.Result.AsEnumerable().Where(r => r.Field<int>("id_GroupFile") == gGroup.id_GroupFile && r.Field<bool>("isActive"));
+                    foreach (DataRow row in rowCollect)
+                    {
+                        filterExtension += $"*.{row["Extension"]};";
+                    }
+                    filterExtension = filterExtension.Remove(filterExtension.Length - 1, 1);
+                    filterExtension += "|";
+                }
+                filterExtension = filterExtension.Remove(filterExtension.Length - 1, 1);
+                openFileDialog1.Filter = filterExtension;
+            }
+        }
     }
 }

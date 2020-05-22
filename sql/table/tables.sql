@@ -184,12 +184,34 @@ ALTER TABLE [ArchiveDoc].[j_HistoryStatus] ADD CONSTRAINT FK_j_HistoryStatus_id_
 GO
 
 
+CREATE TABLE [ArchiveDoc].[s_GroupFile](
+	[id] [int] IDENTITY(1,1) NOT NULL,	
+	[cName]					varchar(150)	not null,	
+	[isActive]				bit				not null	DEFAULT 1,
+	[id_Creator]			int				not null,
+	[DateCreate]			datetime		not null,
+	[id_Editor]				int				null,
+	[DateEdit]				datetime		null,
+ CONSTRAINT [PK_s_GroupFile] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = ON, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [ArchiveDoc].[s_GroupFile] ADD CONSTRAINT FK_s_GroupFile_id_Creator FOREIGN KEY (id_Creator)  REFERENCES [dbo].[ListUsers] (id)
+GO
+
+ALTER TABLE [ArchiveDoc].[s_GroupFile] ADD CONSTRAINT FK_s_GroupFile_id_Editor FOREIGN KEY (id_Editor)  REFERENCES [dbo].[ListUsers] (id)
+GO
+
 
 CREATE TABLE [ArchiveDoc].[s_TypeFile](
 	[id] [int] IDENTITY(1,1) NOT NULL,	
-	[Extension]				varchar(50)	not null,	
-	[isUser]				bit				not null	DEFAULT 0,
-	[isActive]				bit				not null	DEFAULT 1,
+	[id_GroupFile]			int				not null,
+	[Extension]				varchar(50)		not null,	
+	[isUse]				bit				not null	DEFAULT 0,
+	[isActive]				bit				not null	DEFAULT 1,	
 	[id_Creator]			int				not null,
 	[DateCreate]			datetime		not null,
 	[id_Editor]				int				null,
@@ -205,6 +227,9 @@ ALTER TABLE [ArchiveDoc].[s_TypeFile] ADD CONSTRAINT FK_s_TypeFile_id_Creator FO
 GO
 
 ALTER TABLE [ArchiveDoc].[s_TypeFile] ADD CONSTRAINT FK_s_TypeFile_id_Editor FOREIGN KEY (id_Editor)  REFERENCES [dbo].[ListUsers] (id)
+GO
+
+ALTER TABLE [ArchiveDoc].[s_TypeFile] ADD CONSTRAINT FK_s_TypeFile_id_GroupFile FOREIGN KEY (id_GroupFile)  REFERENCES [ArchiveDoc].[s_GroupFile] (id)
 GO
 
 

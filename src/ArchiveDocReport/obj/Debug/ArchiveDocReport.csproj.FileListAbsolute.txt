@@ -1,0 +1,17 @@
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocReport.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocReport.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocReport.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\Framework.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\Interop.Excel.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\EPPlus.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\Interop.WIA.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\Interop.Microsoft.Office.Core.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\bin\Debug\stdole.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csprojAssemblyReference.cache
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.ctrReport.resources
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.Properties.Resources.resources
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csproj.GenerateResource.cache
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csproj.CoreCompileInputs.cache
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csproj.CopyComplete
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.pdb

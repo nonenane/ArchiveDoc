@@ -76,6 +76,6 @@ namespace ArchiveDocAddDoc
         public string nameDoc { set; get; }
         public string fileName { set; get; }
         public string fileNameWithOutExtension { set; get; }
-        public int id_doc { set; get; }
+        public byte[] fileBytes { set; get; }
     }
 }

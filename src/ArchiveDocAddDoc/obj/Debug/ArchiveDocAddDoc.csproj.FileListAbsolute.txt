@@ -17,4 +17,3 @@ D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.dll
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.frmAddDoc.resources
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.frmSelectDocuments.resources
-D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.frmAddDoc_copy.resources

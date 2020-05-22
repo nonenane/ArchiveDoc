@@ -1,0 +1,16 @@
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocSettings.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocSettings.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocSettings.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\Framework.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\Interop.Excel.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\EPPlus.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\Interop.WIA.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\Interop.Microsoft.Office.Core.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\stdole.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.Properties.Resources.resources
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.csproj.GenerateResource.cache
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.csproj.CoreCompileInputs.cache
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.csproj.CopyComplete
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.settings.resources
