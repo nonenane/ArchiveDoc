@@ -330,7 +330,7 @@ namespace ArchiveDocAddDoc
             else
             {
                 var groupeExtension = task.Result.AsEnumerable()
-                        .Where(r=>r.Field<bool>("isActive"))
+                        .Where(r=>r.Field<bool>("isActive") && r.Field<bool>("isUse"))
                         .GroupBy(r => new { id_GroupFile = r.Field<int>("id_GroupFile"), cName = r.Field<string>("cName") })
                         .Select(s => new
                         {
@@ -343,7 +343,7 @@ namespace ArchiveDocAddDoc
                 foreach (var gGroup in groupeExtension)
                 {
                     filterExtension += $"{gGroup.cName}|";
-                    EnumerableRowCollection<DataRow> rowCollect = task.Result.AsEnumerable().Where(r => r.Field<int>("id_GroupFile") == gGroup.id_GroupFile && r.Field<bool>("isActive"));
+                    EnumerableRowCollection<DataRow> rowCollect = task.Result.AsEnumerable().Where(r => r.Field<int>("id_GroupFile") == gGroup.id_GroupFile && r.Field<bool>("isActive") && r.Field<bool>("isUse"));
                     foreach (DataRow row in rowCollect)
                     {
                         filterExtension += $"*.{row["Extension"]};";

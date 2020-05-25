@@ -143,6 +143,41 @@ namespace ArchiveDoc
 
             return dtResult;
         }
-     
+
+        /// <summary>
+        /// Получение списка должностей по отделам
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>Таблица с данными</returns>        
+        public async Task<DataTable> getPostVsDeps(bool isAll)
+        {
+            ap.Clear();
+            ap.Add(isAll);
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getPostVsDeps]",
+                 new string[1] { "@isAll"},
+                 new DbType[1] { DbType.Boolean }, ap);
+
+            return dtResult;
+        }
+
+        /// <summary>
+        /// Получение списка должностей по отделам
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>Таблица с данными</returns>        
+        public async Task<DataTable> getDoc_TypeDoc_Post(int id_Posts,int id_Departments)
+        {
+            ap.Clear();
+            ap.Add(id_Posts);
+            ap.Add(id_Departments);
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getDoc_TypeDoc_Post]",
+                 new string[2] { "@id_Posts", "@id_Departments" },
+                 new DbType[2] { DbType.Int32,DbType.Int32 }, ap);
+
+            return dtResult;
+        }
+
     }
 }

@@ -60,5 +60,11 @@ namespace ArchiveDoc
             panel1.Controls.Clear();
             panel1.Controls.Add(new ArchiveDocReport.ctrReport() { Dock = DockStyle.Fill });
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new cntDocuments() { Dock = DockStyle.Fill });
+        }
     }
 }

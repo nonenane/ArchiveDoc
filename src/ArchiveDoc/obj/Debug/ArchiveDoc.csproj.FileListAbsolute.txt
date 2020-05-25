@@ -35,3 +35,4 @@ D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocSettings.dll.confi
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.dll
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.cntDocuments.resources
