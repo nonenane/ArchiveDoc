@@ -179,5 +179,21 @@ namespace ArchiveDoc
             return dtResult;
         }
 
+
+        /// <summary>Получение списка документов для добавления в документ
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>Таблица с данными</returns>        
+        public async Task<DataTable> getDocumentBytes(int id)
+        {
+            ap.Clear();
+            ap.Add(id);
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getDocumentBytes]",
+                 new string[1] { "@id" },
+                 new DbType[1] { DbType.Int32 }, ap);
+
+            return dtResult;
+        }
     }
 }

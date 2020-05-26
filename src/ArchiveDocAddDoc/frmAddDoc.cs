@@ -135,7 +135,7 @@ namespace ArchiveDocAddDoc
             int id_status = 1;
             if (DialogResult.No == dlgResult) id_status = 2;
 
-            Task<DataTable> task = Config.hCntMain.setDocuments(id, tbNameDoc.Text.Trim(), tbFileName.Text, fileBytes, (int)cmbTypeDoc.SelectedValue, false, 0);
+            Task<DataTable> task = Config.hCntMain.setDocuments(id, tbNameDoc.Text.Trim(), fileName, fileBytes, (int)cmbTypeDoc.SelectedValue, false, 0);
             task.Wait();
 
             DataTable dtResult = task.Result;

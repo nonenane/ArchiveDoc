@@ -249,7 +249,12 @@ namespace ArchiveDocSettings
             {
             }
         }
-       
+
+        private void btExtension_Click(object sender, EventArgs e)
+        {
+            new ArchiveDocExtensionsFile.frmList().ShowDialog();
+        }
+
         private void cmbTypeDoc_SelectionChangeCommitted(object sender, EventArgs e)
         {
             setFilter();

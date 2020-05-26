@@ -7,7 +7,7 @@ GO
 -- Create date: 2020-04-25
 -- Description:	Получение Данных по документу, должности, и типу документа
 -- =============================================
-CREATE PROCEDURE [ArchiveDoc].[spg_getDoc_TypeDoc_Post]		
+ALTER PROCEDURE [ArchiveDoc].[spg_getDoc_TypeDoc_Post]		
 		@id_Posts int, 
 		@id_Departments int
 AS
@@ -22,7 +22,9 @@ select
 	d.id_TypeDoc,
 	td.cName as nameTypeDoc,
 	dp.id_Posts,
-	p.cName as namePost
+	p.cName as namePost,
+	dd.id as id_documentVsPost,
+	d.[FileName]
 	
 from 
 	ArchiveDoc.Documents_vs_DepartmentsPosts dd

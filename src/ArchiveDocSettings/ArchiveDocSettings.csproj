@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="settings.resx">
       <DependentUpon>settings.cs</DependentUpon>
@@ -84,6 +85,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_ic_extension_48px_352339.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArchiveDocExtensionsFile\ArchiveDocExtensionsFile.csproj">
+      <Project>{16e59f20-1694-4cc6-936c-7508f1665bbd}</Project>
+      <Name>ArchiveDocExtensionsFile</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

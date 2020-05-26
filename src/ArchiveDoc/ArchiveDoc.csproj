@@ -128,6 +128,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\news.png" />
+    <None Include="Resources\click.png" />
+    <None Include="Resources\folder_Dictonary.png" />
+    <None Include="Resources\team.png" />
+    <None Include="Resources\support.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\monitor.png" />
+    <None Include="Resources\Folder.png" />
+    <None Include="Resources\pdf.png" />
+    <None Include="Resources\doc.png" />
+    <None Include="Resources\png.png" />
+    <None Include="Resources\mp3.png" />
+    <None Include="Resources\avi.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\document.png" />
+    <None Include="Resources\archive.png" />
     <None Include="Resources\arrow.png" />
     <None Include="Resources\people.png" />
     <None Include="Resources\office.png" />

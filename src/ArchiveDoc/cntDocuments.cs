@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace ArchiveDoc
 {
@@ -18,21 +19,37 @@ namespace ArchiveDoc
             InitializeComponent();
 
             ImageList myImageList = new ImageList();
-            myImageList.ImageSize = new Size(20, 20);
-            myImageList.Images.Add(Properties.Resources.people);
+            myImageList.ImageSize = new Size(24, 24);
+            myImageList.Images.Add(Properties.Resources.team);
             myImageList.Images.Add(Properties.Resources.arrow);
             myImageList.Images.Add(Properties.Resources.office);
 
             trvDeps.ImageList = myImageList;
+
+            ImageList myImageListDocument = new ImageList();
+            myImageListDocument.ImageSize = new Size(24, 24);
+            myImageListDocument.Images.Add("document", Properties.Resources.document);
+            myImageListDocument.Images.Add("arrow", Properties.Resources.arrow);
+            myImageListDocument.Images.Add("archive", Properties.Resources.archive);
+            myImageListDocument.Images.Add("check", Properties.Resources.check);
+            myImageListDocument.Images.Add("post",Properties.Resources.office);
+
+            myImageListDocument.Images.Add("avi", Properties.Resources.avi);
+            myImageListDocument.Images.Add("doc", Properties.Resources.doc);
+            myImageListDocument.Images.Add("mp3", Properties.Resources.mp3);
+            myImageListDocument.Images.Add("pdf", Properties.Resources.pdf);
+            myImageListDocument.Images.Add("png", Properties.Resources.png);
+
+            trvPost.ImageList = myImageListDocument;
 
             //treeView1.ImageIndex = -1;
             //treeView1.ImageIndex = 0;
             trvDeps.SelectedImageIndex = 1;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cntDocuments_Load(object sender, EventArgs e)
         {
-            getTreeDeps(checkBox1.Checked);
+            getData();
         }
 
         #region "Генерация дерева для отделов"
@@ -275,11 +292,11 @@ namespace ArchiveDoc
                     dtDocuments.Merge(task.Result);
                 }
 
-                EnumerableRowCollection<DataRow> rowCollect = dtDepsToTree.AsEnumerable().Where(r => r.Field<int>("id_Parent") == id_deps);//.OrderByDescending(r => r.Field<bool>("isTop"));
-                foreach (DataRow row in rowCollect)
-                {
-                    getDocuments((Int16)row["id"], id_post, isPost,false);
-                }
+                //EnumerableRowCollection<DataRow> rowCollect = dtDepsToTree.AsEnumerable().Where(r => r.Field<int>("id_Parent") == id_deps);//.OrderByDescending(r => r.Field<bool>("isTop"));
+                //foreach (DataRow row in rowCollect)
+                //{
+                //    getDocuments((Int16)row["id"], id_post, isPost,false);
+                //}
 
                 if (isFirst)
                 {
@@ -301,6 +318,8 @@ namespace ArchiveDoc
             {
                 TreeNode node = new TreeNode();
                 node.Text = (string)gTypeDoc.nameTypeDoc;
+                node.ImageIndex = trvPost.ImageList.Images.IndexOfKey("document");
+                node.SelectedImageIndex = trvPost.ImageList.Images.IndexOfKey("arrow");
                 addDoc(gTypeDoc.id_TypeDoc, node);
                 trvPost.Nodes.Add(node);
             }
@@ -314,8 +333,10 @@ namespace ArchiveDoc
             if (rowCollect.Count() > 0)
             {
                 TreeNode nodeActive = new TreeNode();
-                nodeActive.Text = "Активные";
-
+                nodeActive.Text = "Действующие";
+                nodeActive.ImageIndex = trvPost.ImageList.Images.IndexOfKey("check");
+                nodeActive.SelectedImageIndex = trvPost.ImageList.Images.IndexOfKey("arrow");
+                addPostDoc(nodeActive, rowCollect.CopyToDataTable());
 
                 parentNode.Nodes.Add(nodeActive);
             }
@@ -325,10 +346,98 @@ namespace ArchiveDoc
             {
                 TreeNode nodeArhive = new TreeNode();
                 nodeArhive.Text = "Архив";
+                nodeArhive.ImageIndex = trvPost.ImageList.Images.IndexOfKey("archive");
+                nodeArhive.SelectedImageIndex = trvPost.ImageList.Images.IndexOfKey("arrow");
+                addPostDoc(nodeArhive, rowCollect.CopyToDataTable());
                 parentNode.Nodes.Add(nodeArhive);
             }
         }
+
+        private void addPostDoc(TreeNode parentNode,DataTable dataTable)
+        {
+            var groupPost = dataTable.AsEnumerable().GroupBy(r => new { namePost = r.Field<string>("namePost"), id_Posts = r.Field<int>("id_Posts") })
+                    .Select(s => new { s.Key.id_Posts, s.Key.namePost });
+
+            foreach (var gPost in groupPost)
+            {
+                TreeNode node = new TreeNode();
+                node.Text = gPost.namePost;
+                node.ImageIndex = trvPost.ImageList.Images.IndexOfKey("post");
+                node.SelectedImageIndex = trvPost.ImageList.Images.IndexOfKey("arrow");
+                addDoc(gPost.id_Posts, node, dataTable);
+                parentNode.Nodes.Add(node);
+            }
+        }
+
+        private void addDoc(int id_Posts, TreeNode parentNode, DataTable dataTable)
+        {
+            EnumerableRowCollection<DataRow> rowCollect = dataTable.AsEnumerable().Where(r => r.Field<int>("id_Posts") == id_Posts);
+            foreach (DataRow row in rowCollect)
+            {
+                TreeNode node = new TreeNode();
+                node.Text =(string)row["nameDoc"];
+                node.Tag = new Document();
+                string extension = Path.GetExtension((string)row["FileName"]).Replace(".", "");
+                int indexKey  = trvPost.ImageList.Images.IndexOfKey(extension);
+                if(indexKey==-1)
+                    indexKey = trvPost.ImageList.Images.IndexOfKey("doc");
+                node.ImageIndex = indexKey;
+                node.SelectedImageIndex = trvPost.ImageList.Images.IndexOfKey("arrow");
+
+                ((Document)node.Tag).id_document = (int)row["idDoc"];
+                ((Document)node.Tag).id_documentVsPost = (int)row["id_documentVsPost"];
+                ((Document)node.Tag).id_Status = (int)row["id_Status"];
+                parentNode.Nodes.Add(node);
+            }
+        }
+
+       
+
+        private void chbUnActivePost_CheckedChanged(object sender, EventArgs e)
+        {
+            getData();
+        }
+
+        private void getData()
+        {
+            getTreeDeps(chbUnActivePost.Checked);
+        }
+
+        private void btDictonaryTypeDoc_Click(object sender, EventArgs e)
+        {
+            new ArchiveDocaTypeDoc.frmList().ShowDialog();
+        }
+
+        private void btOpenFile_Click(object sender, EventArgs e)
+        {
+            if (trvPost.SelectedNode == null) return;
+            object objSelectTag = trvPost.SelectedNode.Tag;
+            if (objSelectTag == null) return;
+            if (!(objSelectTag is Document)) return;
+            Task<DataTable> task = Config.hCntMain.getDocumentBytes(((Document)objSelectTag).id_document);
+            task.Wait();
+            if (task.Result != null && task.Result.Rows.Count > 0)
+            {
+                byte[] file = (byte[])task.Result.Rows[0]["DocFile"];
+                string fileName = (string)task.Result.Rows[0]["FileName"];
+                if (!Directory.Exists(Application.StartupPath + @"\tmp\"))
+                    Directory.CreateDirectory(Application.StartupPath + @"\tmp\");
+                File.WriteAllBytes(Application.StartupPath + @"\tmp\" + fileName, file);
+                Process.Start(Application.StartupPath + @"\tmp\" + fileName);
+            }
+        }
+
+        private void btViewHisroty_Click(object sender, EventArgs e)
+        {
+            if (trvPost.SelectedNode == null) return;
+            object objSelectTag = trvPost.SelectedNode.Tag;
+            if (objSelectTag == null) return;
+            if (!(objSelectTag is Document)) return;
+
+            new ArchiveDocJournalStatusHistory.frmHistory() { id_DocumentsDepartmentsPosts = ((Document)objSelectTag).id_documentVsPost }.ShowDialog();
+        }
     }
+
 
 
     public class Deps
@@ -349,5 +458,12 @@ namespace ArchiveDoc
         public void setIdPost(int id_Post) { this.id_Post = id_Post; }
 
         public int getIdPost() { return this.id_Post; }
+    }
+
+    public class Document
+    {
+        public int id_document { get; set; }
+        public int id_documentVsPost { get; set; }
+        public int id_Status { get; set; }
     }
 }

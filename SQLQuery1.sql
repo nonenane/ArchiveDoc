@@ -1,5 +1,5 @@
 DECLARE 
-	@id_Posts int = 0, @id_Departments int = 99
+	@id_Posts int = 0, @id_Departments int = 0
 
 
 
@@ -12,6 +12,10 @@ select
 	td.cName as nameTypeDoc,
 	dp.id_Posts,
 	p.cName as namePost,
+	dd.id,
+	dp.id_Departments,
+	dp.id_Posts,
+	d.FileName
 	
 from 
 	ArchiveDoc.Documents_vs_DepartmentsPosts dd

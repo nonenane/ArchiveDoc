@@ -28,30 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.tpMain = new System.Windows.Forms.TabPage();
+            this.tpSettings = new System.Windows.Forms.TabPage();
+            this.tpReport = new System.Windows.Forms.TabPage();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsslServerDataBase = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(28, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(222, 143);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Справочник типов";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(283, 35);
+            this.button2.Location = new System.Drawing.Point(245, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(222, 143);
             this.button2.TabIndex = 0;
@@ -61,7 +55,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(28, 197);
+            this.button3.Location = new System.Drawing.Point(17, 6);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(222, 143);
             this.button3.TabIndex = 1;
@@ -69,25 +63,33 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // tabControl1
             // 
-            this.button4.Location = new System.Drawing.Point(283, 197);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(222, 143);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Журнал смены статусов";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tpMain);
+            this.tabControl1.Controls.Add(this.tpSettings);
+            this.tabControl1.Controls.Add(this.tpReport);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1148, 611);
+            this.tabControl1.TabIndex = 6;
             // 
-            // button5
+            // tabPage1
             // 
-            this.button5.Location = new System.Drawing.Point(28, 346);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(222, 143);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Справочник расширений";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1140, 585);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -95,78 +97,85 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(511, 35);
+            this.panel1.Location = new System.Drawing.Point(473, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(603, 519);
-            this.panel1.TabIndex = 3;
+            this.panel1.Size = new System.Drawing.Size(661, 573);
+            this.panel1.TabIndex = 6;
             // 
-            // button6
+            // tpMain
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(664, 560);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(222, 64);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Настройки";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.tpMain.Location = new System.Drawing.Point(4, 22);
+            this.tpMain.Name = "tpMain";
+            this.tpMain.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMain.Size = new System.Drawing.Size(1140, 610);
+            this.tpMain.TabIndex = 1;
+            this.tpMain.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // tpSettings
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(892, 560);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(222, 64);
-            this.button7.TabIndex = 4;
-            this.button7.Text = "Отчёт";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.tpSettings.Location = new System.Drawing.Point(4, 22);
+            this.tpSettings.Name = "tpSettings";
+            this.tpSettings.Size = new System.Drawing.Size(1140, 610);
+            this.tpSettings.TabIndex = 2;
+            this.tpSettings.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // tpReport
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.Location = new System.Drawing.Point(436, 560);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(222, 64);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "Главная форма";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.tpReport.Location = new System.Drawing.Point(4, 22);
+            this.tpReport.Name = "tpReport";
+            this.tpReport.Size = new System.Drawing.Size(1140, 610);
+            this.tpReport.TabIndex = 3;
+            this.tpReport.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslServerDataBase});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 614);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1148, 22);
+            this.statusStrip1.TabIndex = 7;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsslServerDataBase
+            // 
+            this.tsslServerDataBase.Name = "tsslServerDataBase";
+            this.tsslServerDataBase.Size = new System.Drawing.Size(12, 17);
+            this.tsslServerDataBase.Text = "_";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1148, 636);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TabPage tpMain;
+        private System.Windows.Forms.TabPage tpSettings;
+        private System.Windows.Forms.TabPage tpReport;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tsslServerDataBase;
     }
 }
 

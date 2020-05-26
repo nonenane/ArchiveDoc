@@ -14,3 +14,6 @@ D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.c
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.dll
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.settings.resources
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.dll.config

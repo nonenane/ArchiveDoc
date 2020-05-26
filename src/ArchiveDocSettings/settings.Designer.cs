@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvExtension = new System.Windows.Forms.DataGridView();
-            this.cmbDeps = new System.Windows.Forms.ComboBox();
-            this.lDeps = new System.Windows.Forms.Label();
-            this.cmbTypeDoc = new System.Windows.Forms.ComboBox();
-            this.lTypeDoc = new System.Windows.Forms.Label();
-            this.cExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cDep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbNameDeps = new System.Windows.Forms.TextBox();
+            this.cmbDeps = new System.Windows.Forms.ComboBox();
+            this.lDeps = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbTypeDoc = new System.Windows.Forms.ComboBox();
+            this.lTypeDoc = new System.Windows.Forms.Label();
+            this.dgvExtension = new System.Windows.Forms.DataGridView();
+            this.cExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btExtension = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -58,14 +59,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cDep,
@@ -79,10 +80,26 @@
             this.dgvData.TabIndex = 6;
             this.dgvData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellEndEdit);
             // 
+            // cDep
+            // 
+            this.cDep.DataPropertyName = "name";
+            this.cDep.HeaderText = "Отдел";
+            this.cDep.MinimumWidth = 120;
+            this.cDep.Name = "cDep";
+            this.cDep.ReadOnly = true;
+            // 
+            // cSelect
+            // 
+            this.cSelect.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.cSelect.DataPropertyName = "isSelect";
+            this.cSelect.HeaderText = "V";
+            this.cSelect.MinimumWidth = 45;
+            this.cSelect.Name = "cSelect";
+            this.cSelect.Width = 45;
+            // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.groupBox1.Controls.Add(this.tbNameDeps);
             this.groupBox1.Controls.Add(this.cmbDeps);
             this.groupBox1.Controls.Add(this.lDeps);
@@ -94,49 +111,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Настройка прав доступа отделов";
             // 
-            // groupBox2
+            // tbNameDeps
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.cmbTypeDoc);
-            this.groupBox2.Controls.Add(this.lTypeDoc);
-            this.groupBox2.Controls.Add(this.dgvExtension);
-            this.groupBox2.Location = new System.Drawing.Point(265, 14);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(229, 517);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Настройки расширения файлов";
-            // 
-            // dgvExtension
-            // 
-            this.dgvExtension.AllowUserToAddRows = false;
-            this.dgvExtension.AllowUserToDeleteRows = false;
-            this.dgvExtension.AllowUserToResizeRows = false;
-            this.dgvExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvExtension.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExtension.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvExtension.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvExtension.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cExtension,
-            this.cUse});
-            this.dgvExtension.Location = new System.Drawing.Point(6, 62);
-            this.dgvExtension.MultiSelect = false;
-            this.dgvExtension.Name = "dgvExtension";
-            this.dgvExtension.RowHeadersVisible = false;
-            this.dgvExtension.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExtension.Size = new System.Drawing.Size(217, 449);
-            this.dgvExtension.TabIndex = 6;
-            this.dgvExtension.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExtension_CellEndEdit);
+            this.tbNameDeps.Location = new System.Drawing.Point(6, 62);
+            this.tbNameDeps.MaxLength = 150;
+            this.tbNameDeps.Name = "tbNameDeps";
+            this.tbNameDeps.Size = new System.Drawing.Size(217, 20);
+            this.tbNameDeps.TabIndex = 9;
+            this.tbNameDeps.TextChanged += new System.EventHandler(this.tbNameDeps_TextChanged);
             // 
             // cmbDeps
             // 
@@ -157,6 +139,20 @@
             this.lDeps.TabIndex = 7;
             this.lDeps.Text = "Отдел";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.groupBox2.Controls.Add(this.btExtension);
+            this.groupBox2.Controls.Add(this.cmbTypeDoc);
+            this.groupBox2.Controls.Add(this.lTypeDoc);
+            this.groupBox2.Controls.Add(this.dgvExtension);
+            this.groupBox2.Location = new System.Drawing.Point(265, 14);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(229, 517);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Настройки расширения файлов";
+            // 
             // cmbTypeDoc
             // 
             this.cmbTypeDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -176,6 +172,36 @@
             this.lTypeDoc.TabIndex = 7;
             this.lTypeDoc.Text = "Тип файла";
             // 
+            // dgvExtension
+            // 
+            this.dgvExtension.AllowUserToAddRows = false;
+            this.dgvExtension.AllowUserToDeleteRows = false;
+            this.dgvExtension.AllowUserToResizeRows = false;
+            this.dgvExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvExtension.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExtension.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvExtension.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExtension.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cExtension,
+            this.cUse});
+            this.dgvExtension.Location = new System.Drawing.Point(6, 62);
+            this.dgvExtension.MultiSelect = false;
+            this.dgvExtension.Name = "dgvExtension";
+            this.dgvExtension.RowHeadersVisible = false;
+            this.dgvExtension.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvExtension.Size = new System.Drawing.Size(217, 413);
+            this.dgvExtension.TabIndex = 6;
+            this.dgvExtension.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExtension_CellEndEdit);
+            // 
             // cExtension
             // 
             this.cExtension.DataPropertyName = "Extension";
@@ -192,31 +218,17 @@
             this.cUse.Name = "cUse";
             this.cUse.Width = 45;
             // 
-            // cDep
+            // btExtension
             // 
-            this.cDep.DataPropertyName = "name";
-            this.cDep.HeaderText = "Отдел";
-            this.cDep.MinimumWidth = 120;
-            this.cDep.Name = "cDep";
-            this.cDep.ReadOnly = true;
-            // 
-            // cSelect
-            // 
-            this.cSelect.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.cSelect.DataPropertyName = "isSelect";
-            this.cSelect.HeaderText = "V";
-            this.cSelect.MinimumWidth = 45;
-            this.cSelect.Name = "cSelect";
-            this.cSelect.Width = 45;
-            // 
-            // tbNameDeps
-            // 
-            this.tbNameDeps.Location = new System.Drawing.Point(6, 62);
-            this.tbNameDeps.MaxLength = 150;
-            this.tbNameDeps.Name = "tbNameDeps";
-            this.tbNameDeps.Size = new System.Drawing.Size(217, 20);
-            this.tbNameDeps.TabIndex = 9;
-            this.tbNameDeps.TextChanged += new System.EventHandler(this.tbNameDeps_TextChanged);
+            this.btExtension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btExtension.BackgroundImage = global::ArchiveDocSettings.Properties.Resources.iconfinder_ic_extension_48px_352339;
+            this.btExtension.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btExtension.Location = new System.Drawing.Point(191, 479);
+            this.btExtension.Name = "btExtension";
+            this.btExtension.Size = new System.Drawing.Size(32, 32);
+            this.btExtension.TabIndex = 9;
+            this.btExtension.UseVisualStyleBackColor = true;
+            this.btExtension.Click += new System.EventHandler(this.btExtension_Click);
             // 
             // settings
             // 
@@ -252,5 +264,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cDep;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cSelect;
         private System.Windows.Forms.TextBox tbNameDeps;
+        private System.Windows.Forms.Button btExtension;
     }
 }

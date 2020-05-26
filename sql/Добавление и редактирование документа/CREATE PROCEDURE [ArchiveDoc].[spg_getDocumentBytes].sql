@@ -7,14 +7,15 @@ GO
 -- Create date: 2020-04-25
 -- Description:	Получение тела документа
 -- =============================================
-CREATE PROCEDURE [ArchiveDoc].[spg_getDocumentBytes]		 
+ALTER PROCEDURE [ArchiveDoc].[spg_getDocumentBytes]		 
 	@id int
 AS
 BEGIN
 	SET NOCOUNT ON;
 
 select 
-	d.DocFile
+	d.DocFile,
+	d.FileName
 from 
 	ArchiveDoc.s_Documents d
 where
