@@ -15,12 +15,13 @@ namespace ArchiveDocAddDoc
 {
     public partial class frmAddDoc : Form
     {
-        public DataRowView row { set; private get; }
+        //public DataRowView row { set; private get; }
+        public int id { set; private get; }
 
         private bool isEditData = false;
         private string oldName, oldNpp;
         private bool oldViewAdd, oldViewArchive;
-        private int id = 0;
+        
         private string fileName="";
         private byte[] fileBytes=null;
         DataTable dtPostVsDeps;
@@ -60,6 +61,34 @@ namespace ArchiveDocAddDoc
             init_postCombobox();
             init_postVsDeps();
             init_extentsion();
+
+            if (id != 0)
+            {
+                Task<DataTable> task = Config.hCntMain.getDocuments(id);
+                task.Wait();
+                if (task.Result != null && task.Result.Rows.Count > 0)
+                {
+                    cmbTypeDoc.SelectedValue = (int)task.Result.Rows[0]["id_TypeDoc"];
+                    tbNameDoc.Text = (string)task.Result.Rows[0]["cName"];
+                    tbFileName.Text = Path.GetFileNameWithoutExtension((string)task.Result.Rows[0]["FileName"]);
+                    fileName = (string)task.Result.Rows[0]["FileName"];
+
+                    task = Config.hCntMain.getDocuments_vs_DepartmentsPosts(id);
+                    task.Wait();
+                    if (task.Result != null && task.Result.Rows.Count > 0)
+                    {
+                        foreach (DataRow row in task.Result.Rows)
+                        {
+                            EnumerableRowCollection<DataRow> rowCollect = dtPostVsDeps.AsEnumerable().Where(r => r.Field<int>("id") == (int)row["id_DepartmentsPosts"]);
+                            if (rowCollect.Count() > 0)
+                            {
+                                rowCollect.First()["isSelect"] = true;
+                                rowCollect.First()["id_DocVsDepPosts"] = (int)row["id"];
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void btAddDoc_Click(object sender, EventArgs e)
@@ -102,7 +131,7 @@ namespace ArchiveDocAddDoc
                 return;
             }
 
-            if (fileBytes==null)
+            if (fileBytes == null && id == 0)
             {
                 MessageBox.Show($"Необходимо выбрать \"{lFileName.Text}\"", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 btAddDoc.Focus();
@@ -184,9 +213,15 @@ namespace ArchiveDocAddDoc
                 Logging.StopFirstLevel();
             }
 
+            foreach (int id_DocVsDepPosts in listDelPost)
+            {
+                task = Config.hCntMain.setDocuments_vs_DepartmentsPosts(id_DocVsDepPosts, "", "", 0, id, id_status, false, true, 1);
+                task.Wait();
+            }
+
             foreach (DataRow row in rowCollect)
             {
-                task = Config.hCntMain.setDocuments_vs_DepartmentsPosts(0, "", "", (int)row["id"], id, id_status, false, false, 0);
+                task = Config.hCntMain.setDocuments_vs_DepartmentsPosts((int)row["id_DocVsDepPosts"], "", "", (int)row["id"], id, id_status, false, false, 0);
                 task.Wait();
             }
 
@@ -287,6 +322,25 @@ namespace ArchiveDocAddDoc
             dtPostVsDeps = task.Result;
             setFilter();
             dgvData.DataSource = dtPostVsDeps;
+        }
+
+        private List<int> listDelPost = new List<int>();
+        private void dgvData_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == cSelect.Index)
+            {
+                if (dtPostVsDeps.DefaultView[e.RowIndex]["isSelect"] is bool && dtPostVsDeps.DefaultView[e.RowIndex]["id_DocVsDepPosts"] is int)
+                {
+                    int id_DocVsDepPosts = (int)dtPostVsDeps.DefaultView[e.RowIndex]["id_DocVsDepPosts"];
+                    bool isSelect = (bool)dtPostVsDeps.DefaultView[e.RowIndex]["isSelect"];
+
+                    if (id_DocVsDepPosts == 0) return;
+
+                    if (isSelect) { if (listDelPost.Contains(id_DocVsDepPosts)) listDelPost.Remove(id_DocVsDepPosts); }
+                    else
+                    { if (!listDelPost.Contains(id_DocVsDepPosts)) listDelPost.Add(id_DocVsDepPosts); }
+                }
+            }
         }
 
         private void setFilter()

@@ -7,7 +7,7 @@ GO
 -- Create date: 2020-04-25
 -- Description:	Запись связки документа и должности
 -- =============================================
-CREATE PROCEDURE [ArchiveDoc].[spg_setDocuments_vs_DepartmentsPosts]		 
+ALTER PROCEDURE [ArchiveDoc].[spg_setDocuments_vs_DepartmentsPosts]		 
 	@id int,
 	@ArchiveComment varchar(max),
 	@BaseDocumentsArchive varchar(max),
@@ -60,6 +60,9 @@ BEGIN TRY
 						id_Editor = @id_user,DateEdit = GETDATE()
 					where id = @id
 
+					INSERT INTO ArchiveDoc.j_HistoryStatus(id_DocumentsDepartmentsPosts,id_Status,DateCreate,id_Creator)
+					values (@id,@id_Status,GETDATE(),@id_user)
+
 					SELECT @id as id
 					return;
 				END
@@ -68,11 +71,11 @@ BEGIN TRY
 		BEGIN
 			IF @result = 0
 				BEGIN
-					IF NOT EXISTS(select TOP(1) id from [ArchiveDoc].[s_TypeDoc] where id = @id)
-						BEGIN
-							select -1 as id
-							return;
-						END
+					--IF NOT EXISTS(select TOP(1) id from [ArchiveDoc].[s_TypeDoc] where id = @id)
+					--	BEGIN
+					--		select -1 as id
+					--		return;
+					--	END
 																			
 					select 0 as id
 					return;

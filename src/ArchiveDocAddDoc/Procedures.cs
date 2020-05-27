@@ -240,6 +240,39 @@ namespace ArchiveDocAddDoc
             return dtResult;
         }
 
+        /// <summary>Получение тела документа
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>Таблица с данными</returns>        
+        public async Task<DataTable> getDocuments(int id)
+        {
+            ap.Clear();
+            ap.Add(id);
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getDocuments]",
+                 new string[1] { "@id" },
+                 new DbType[1] { DbType.Int32 }, ap);
+
+            return dtResult;
+        }
+
+
+        /// <summary>Получение тела документа
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>Таблица с данными</returns>        
+        public async Task<DataTable> getDocuments_vs_DepartmentsPosts(int id)
+        {
+            ap.Clear();
+            ap.Add(id);
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getDocuments_vs_DepartmentsPosts]",
+                 new string[1] { "@id" },
+                 new DbType[1] { DbType.Int32 }, ap);
+
+            return dtResult;
+        }
+
         #endregion
 
         /// <summary>

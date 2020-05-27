@@ -21,12 +21,7 @@ namespace ArchiveDoc
                 $" Пользователь: {Nwuram.Framework.Settings.User.UserSettings.User.FullUsername}";
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            new ArchiveDocAddDoc.frmAddDoc() { Text = "Добавление документа" }.ShowDialog();
-        }
-
+   
         private void button3_Click(object sender, EventArgs e)
         {
             new post.frmAdd() { Text = "Добавить должность" }.ShowDialog();

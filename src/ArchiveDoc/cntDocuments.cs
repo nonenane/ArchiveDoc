@@ -436,6 +436,30 @@ namespace ArchiveDoc
 
             new ArchiveDocJournalStatusHistory.frmHistory() { id_DocumentsDepartmentsPosts = ((Document)objSelectTag).id_documentVsPost }.ShowDialog();
         }
+
+        private void btAddDoc_Click(object sender, EventArgs e)
+        {
+            new ArchiveDocAddDoc.frmAddDoc() { Text = "Добавление документа" }.ShowDialog();
+        }
+
+        private void btEditDoc_Click(object sender, EventArgs e)
+        {
+            if (trvPost.SelectedNode == null) return;
+            object objSelectTag = trvPost.SelectedNode.Tag;
+            if (objSelectTag == null) return;
+            if (!(objSelectTag is Document)) return;
+
+            new ArchiveDocAddDoc.frmAddDoc() { Text = "Редактирование документа", id = ((Document)objSelectTag).id_document }.ShowDialog();
+        }
+
+        private void btDelDoc_Click(object sender, EventArgs e)
+        {
+            if (trvPost.SelectedNode == null) return;
+            object objSelectTag = trvPost.SelectedNode.Tag;
+            if (objSelectTag == null) return;
+            if (!(objSelectTag is Document)) return;
+           
+        }
     }
 
 

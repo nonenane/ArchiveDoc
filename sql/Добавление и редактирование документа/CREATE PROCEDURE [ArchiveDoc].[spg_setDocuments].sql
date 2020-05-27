@@ -7,11 +7,11 @@ GO
 -- Create date: 2020-04-25
 -- Description:	Запись документов
 -- =============================================
-CREATE PROCEDURE [ArchiveDoc].[spg_setDocuments]		 
+ALTER PROCEDURE [ArchiveDoc].[spg_setDocuments]		 
 	@id int,
 	@cName varchar(max),
 	@fileName varchar(max),
-	@docBytes varbinary(max),
+	@docBytes varbinary(max) = null,
 	@id_DocType int,	
 	@id_user int,
 	@result int = 0,
@@ -42,9 +42,21 @@ BEGIN TRY
 				END
 			ELSE
 				BEGIN
-					UPDATE [ArchiveDoc].[s_Documents] 
-					set cName = @cName,[FileName]=@fileName,DocFile=@docBytes,id_TypeDoc=@id_DocType,id_Editor = @id_user,DateEdit = GETDATE()
-					where id = @id
+					
+					IF @docBytes is null
+						select @docBytes = DocFile from [ArchiveDoc].[s_Documents] where id = @id
+
+					UPDATE
+						[ArchiveDoc].[s_Documents] 
+					set 
+						cName = @cName,
+						[FileName]=@fileName,
+						DocFile=@docBytes,
+						id_TypeDoc=@id_DocType,
+						id_Editor = @id_user,
+						DateEdit = GETDATE()
+					where
+						id = @id
 
 					SELECT @id as id
 					return;
@@ -65,6 +77,7 @@ BEGIN TRY
 				END
 			ELSE
 				BEGIN
+					DELETE FROM ArchiveDoc.Documents_vs_DepartmentsPosts where id_Documents = @id
 					DELETE FROM [ArchiveDoc].[s_Documents] where id = @id
 					RETURN
 				END
