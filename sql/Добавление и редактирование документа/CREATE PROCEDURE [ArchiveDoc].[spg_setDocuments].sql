@@ -66,12 +66,18 @@ BEGIN TRY
 		BEGIN
 			IF @result = 0
 				BEGIN
-					IF NOT EXISTS(select TOP(1) id from [ArchiveDoc].[s_TypeDoc] where id = @id)
+					IF NOT EXISTS(select TOP(1) id from [ArchiveDoc].[s_Documents] where id = @id)
 						BEGIN
 							select -1 as id
 							return;
 						END
-																			
+					
+					IF exists( select * from ArchiveDoc.Documents_vs_DepartmentsPosts where id_Documents = @id and  id_Status <> 1)
+						BEGIN 
+							select -2 as id;
+							return; 
+						END
+					
 					select 0 as id
 					return;
 				END
@@ -79,6 +85,7 @@ BEGIN TRY
 				BEGIN
 					DELETE FROM ArchiveDoc.Documents_vs_DepartmentsPosts where id_Documents = @id
 					DELETE FROM [ArchiveDoc].[s_Documents] where id = @id
+					
 					RETURN
 				END
 		END

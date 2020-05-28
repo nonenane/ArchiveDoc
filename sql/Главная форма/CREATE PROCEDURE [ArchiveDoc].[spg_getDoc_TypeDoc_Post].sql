@@ -9,7 +9,8 @@ GO
 -- =============================================
 ALTER PROCEDURE [ArchiveDoc].[spg_getDoc_TypeDoc_Post]		
 		@id_Posts int, 
-		@id_Departments int
+		@id_Departments int,
+		@isAll bit
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -24,7 +25,8 @@ select
 	dp.id_Posts,
 	p.cName as namePost,
 	dd.id as id_documentVsPost,
-	d.[FileName]
+	d.[FileName],
+	td.isActive 
 	
 from 
 	ArchiveDoc.Documents_vs_DepartmentsPosts dd
@@ -35,5 +37,6 @@ from
 		left join ArchiveDoc.s_Posts p on p.id = dp.id_Posts
 where 
 	(@id_Posts = 0 or dp.id_Posts = @id_Posts) and (@id_Departments = 0 or dp.id_Departments = @id_Departments)
+	and (@isAll = 1 or td.isActive = 1)
 
 END

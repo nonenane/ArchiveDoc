@@ -14,6 +14,8 @@ namespace ArchiveDoc
 {
     public partial class cntDocuments : UserControl
     {
+        ArchiveDocAddDoc.transferDocuments transferDoc = new ArchiveDocAddDoc.transferDocuments();
+
         public cntDocuments()
         {
             InitializeComponent();
@@ -40,11 +42,7 @@ namespace ArchiveDoc
             myImageListDocument.Images.Add("pdf", Properties.Resources.pdf);
             myImageListDocument.Images.Add("png", Properties.Resources.png);
 
-            trvPost.ImageList = myImageListDocument;
-
-            //treeView1.ImageIndex = -1;
-            //treeView1.ImageIndex = 0;
-            trvDeps.SelectedImageIndex = 1;
+            trvPost.ImageList = myImageListDocument;          
         }
 
         private void cntDocuments_Load(object sender, EventArgs e)
@@ -60,6 +58,7 @@ namespace ArchiveDoc
         private void getTreeDeps(bool isAll = true)
         {
             trvDeps.Nodes.Clear();
+            trvPost.Nodes.Clear();
             //treeView1.ShowLines=false;
 
             Task<DataTable> task = Config.hCntMain.getDeps();
@@ -141,6 +140,8 @@ namespace ArchiveDoc
                 ((Deps)node.Tag).setIdDeps(id_deps);
                 ((Deps)node.Tag).setIdPost((int)row["id_Posts"]);
 
+                if (!(bool)row["isActive"]) node.BackColor = pUnActivePost.BackColor;
+
                 parentNote.Nodes.Add(node);
 
             }
@@ -181,9 +182,6 @@ namespace ArchiveDoc
                 parentNote.Nodes.Add(node);
             }
         }
-
-
-
 
         private void newTableDepsForTree(DataTable dtDeps, DataTable dtPostvsDeps)
         {
@@ -263,18 +261,41 @@ namespace ArchiveDoc
 
         #endregion
 
+        public TreeNode previousSelectedNode = null;
+
+        private void trvDeps_Validating(object sender, CancelEventArgs e)
+        {
+            //trvDeps.SelectedNode.BackColor = SystemColors.Highlight;
+            //trvDeps.SelectedNode.ForeColor = Color.White;
+            previousSelectedNode = trvDeps.SelectedNode;
+        }
+
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //Console.WriteLine($"{e.Node.Text}   Id_Deps:{((Deps)e.Node.Tag).getIdDeps()}  Id_Post:{((Deps)e.Node.Tag).getIdPost()}   IsPost:{((Deps)e.Node.Tag).getIsPost()}");
+            if (previousSelectedNode != null)
+            {
+                previousSelectedNode.BackColor = trvDeps.SelectedNode.BackColor;
+                previousSelectedNode.ForeColor = trvDeps.SelectedNode.ForeColor;
+            }
 
-            getDocuments(((Deps)e.Node.Tag).getIdDeps(), ((Deps)e.Node.Tag).getIdPost(), ((Deps)e.Node.Tag).getIsPost(),true);
+            //Console.WriteLine($"{e.Node.Text}   Id_Deps:{((Deps)e.Node.Tag).getIdDeps()}  Id_Post:{((Deps)e.Node.Tag).getIdPost()}   IsPost:{((Deps)e.Node.Tag).getIsPost()}");
+            //getDocuments(((Deps)e.Node.Tag).getIdDeps(), ((Deps)e.Node.Tag).getIdPost(), ((Deps)e.Node.Tag).getIsPost(), true);
+            getDataDocuments();
         }
+
 
         DataTable dtDocuments;
 
+        private void getDataDocuments()
+        {
+            TreeNode node = trvDeps.SelectedNode;
+
+            getDocuments(((Deps)node.Tag).getIdDeps(), ((Deps)node.Tag).getIdPost(), ((Deps)node.Tag).getIsPost(), true);
+        }
+
         private void getDocuments(int id_deps, int id_post, bool isPost,bool isFirst)
         {
-            Task<DataTable> task = Config.hCntMain.getDoc_TypeDoc_Post(id_post, id_deps);
+            Task<DataTable> task = Config.hCntMain.getDoc_TypeDoc_Post(id_post, id_deps,chbUnActiveDocType.Checked);
             task.Wait();
 
             if (isPost)
@@ -311,8 +332,8 @@ namespace ArchiveDoc
             trvPost.Nodes.Clear();
             trvPost.BeginUpdate();
 
-            var groupTypeDoc = dtDocuments.AsEnumerable().GroupBy(r => new { id_TypeDoc = r.Field<int>("id_TypeDoc"), nameTypeDoc = r.Field<string>("nameTypeDoc") })
-                .Select(s => new { s.Key.id_TypeDoc, s.Key.nameTypeDoc });
+            var groupTypeDoc = dtDocuments.AsEnumerable().GroupBy(r => new { id_TypeDoc = r.Field<int>("id_TypeDoc"), nameTypeDoc = r.Field<string>("nameTypeDoc"), isActive = r.Field<bool>("isActive") })
+                .Select(s => new { s.Key.id_TypeDoc, s.Key.nameTypeDoc,s.Key.isActive });
 
             foreach (var gTypeDoc in groupTypeDoc)
             {
@@ -320,6 +341,7 @@ namespace ArchiveDoc
                 node.Text = (string)gTypeDoc.nameTypeDoc;
                 node.ImageIndex = trvPost.ImageList.Images.IndexOfKey("document");
                 node.SelectedImageIndex = trvPost.ImageList.Images.IndexOfKey("arrow");
+                if (!gTypeDoc.isActive) node.BackColor = pUnActiveTypeDoc.BackColor;
                 addDoc(gTypeDoc.id_TypeDoc, node);
                 trvPost.Nodes.Add(node);
             }
@@ -375,11 +397,11 @@ namespace ArchiveDoc
             foreach (DataRow row in rowCollect)
             {
                 TreeNode node = new TreeNode();
-                node.Text =(string)row["nameDoc"];
+                node.Text = (string)row["nameDoc"];
                 node.Tag = new Document();
                 string extension = Path.GetExtension((string)row["FileName"]).Replace(".", "");
-                int indexKey  = trvPost.ImageList.Images.IndexOfKey(extension);
-                if(indexKey==-1)
+                int indexKey = trvPost.ImageList.Images.IndexOfKey(extension);
+                if (indexKey == -1)
                     indexKey = trvPost.ImageList.Images.IndexOfKey("doc");
                 node.ImageIndex = indexKey;
                 node.SelectedImageIndex = trvPost.ImageList.Images.IndexOfKey("arrow");
@@ -387,11 +409,15 @@ namespace ArchiveDoc
                 ((Document)node.Tag).id_document = (int)row["idDoc"];
                 ((Document)node.Tag).id_documentVsPost = (int)row["id_documentVsPost"];
                 ((Document)node.Tag).id_Status = (int)row["id_Status"];
+
+                if ((int)row["id_Status"] == 1)
+                    node.BackColor = pNewDoc.BackColor;
+                else
+                     if ((int)row["id_Status"] == 2) node.BackColor = pViewDoc.BackColor;
+
                 parentNode.Nodes.Add(node);
             }
         }
-
-       
 
         private void chbUnActivePost_CheckedChanged(object sender, EventArgs e)
         {
@@ -439,7 +465,8 @@ namespace ArchiveDoc
 
         private void btAddDoc_Click(object sender, EventArgs e)
         {
-            new ArchiveDocAddDoc.frmAddDoc() { Text = "Добавление документа" }.ShowDialog();
+            if (DialogResult.OK == new ArchiveDocAddDoc.frmAddDoc() { Text = "Добавление документа" }.ShowDialog())
+                getDataDocuments();
         }
 
         private void btEditDoc_Click(object sender, EventArgs e)
@@ -448,6 +475,8 @@ namespace ArchiveDoc
             object objSelectTag = trvPost.SelectedNode.Tag;
             if (objSelectTag == null) return;
             if (!(objSelectTag is Document)) return;
+
+            if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 1)) return;
 
             new ArchiveDocAddDoc.frmAddDoc() { Text = "Редактирование документа", id = ((Document)objSelectTag).id_document }.ShowDialog();
         }
@@ -458,7 +487,62 @@ namespace ArchiveDoc
             object objSelectTag = trvPost.SelectedNode.Tag;
             if (objSelectTag == null) return;
             if (!(objSelectTag is Document)) return;
-           
+
+            //if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 1)) return;
+            if (!transferDoc.deleteDocuments(((Document)objSelectTag).id_document)) return;            
+        }
+
+        private void chbUnActiveDocType_CheckedChanged(object sender, EventArgs e)
+        {
+            getDataDocuments();
+        }
+
+        private void btToArchiv_Click(object sender, EventArgs e)
+        {
+            if (trvPost.SelectedNode == null) return;
+            object objSelectTag = trvPost.SelectedNode.Tag;
+            if (objSelectTag == null) return;
+            if (!(objSelectTag is Document)) return;
+
+            if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 3)) return;
+            if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 4)) return;
+            getDataDocuments();
+        }
+
+        private void btNext_Click(object sender, EventArgs e)
+        {
+            if (trvPost.SelectedNode == null) return;
+            object objSelectTag = trvPost.SelectedNode.Tag;
+            if (objSelectTag == null) return;
+            if (!(objSelectTag is Document)) return;
+
+            if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 1)) return;
+            if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 2)) return;
+            getDataDocuments();
+        }
+
+        private void btDown_Click(object sender, EventArgs e)
+        {
+            if (trvPost.SelectedNode == null) return;
+            object objSelectTag = trvPost.SelectedNode.Tag;
+            if (objSelectTag == null) return;
+            if (!(objSelectTag is Document)) return;
+
+            if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 2)) return;
+            if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 1)) return;
+            getDataDocuments();
+        }
+
+        private void btFilter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btDropFilter_Click(object sender, EventArgs e)
+        {
+            tbNameDeps.Clear();
+            tbNameDocuments.Clear();
+            tbNamePosts.Clear();
         }
     }
 

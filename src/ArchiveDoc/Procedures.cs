@@ -166,15 +166,16 @@ namespace ArchiveDoc
         /// </summary>
         /// <param name=""></param>
         /// <returns>Таблица с данными</returns>        
-        public async Task<DataTable> getDoc_TypeDoc_Post(int id_Posts,int id_Departments)
+        public async Task<DataTable> getDoc_TypeDoc_Post(int id_Posts,int id_Departments,bool isAll)
         {
             ap.Clear();
             ap.Add(id_Posts);
             ap.Add(id_Departments);
+            ap.Add(isAll);
 
             DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getDoc_TypeDoc_Post]",
-                 new string[2] { "@id_Posts", "@id_Departments" },
-                 new DbType[2] { DbType.Int32,DbType.Int32 }, ap);
+                 new string[3] { "@id_Posts", "@id_Departments","@isAll" },
+                 new DbType[3] { DbType.Int32,DbType.Int32,DbType.Boolean }, ap);
 
             return dtResult;
         }

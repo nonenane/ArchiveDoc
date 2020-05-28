@@ -20,7 +20,8 @@ select
 	ltrim(rtrim(p.cName)) as namePost,
 	ltrim(rtrim(d.name)) as nameDeps,
 	cast(0 as bit) as isSelect,
-	cast(0 as int) as  id_DocVsDepPosts
+	cast(0 as int) as id_DocVsDepPosts,
+	dp.isActive
 from 
 	ArchiveDoc.Departments_vs_Posts dp
 		inner join ArchiveDoc.s_Posts p on p.id = dp.id_Posts

@@ -273,6 +273,23 @@ namespace ArchiveDocAddDoc
             return dtResult;
         }
 
+        /// <summary>Получение статуса документа в текущий момент
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>Таблица с данными</returns>        
+        public async Task<DataTable> getStatusDocumentsThisMoment(int id_Documents,int id_status)
+        {
+            ap.Clear();
+            ap.Add(id_Documents);
+            ap.Add(id_status);
+
+            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getStatusDocumentsThisMoment]",
+                 new string[2] { "@id_Documents", "@id_status" },
+                 new DbType[2] { DbType.Int32, DbType.Int32 }, ap);
+
+            return dtResult;
+        }
+
         #endregion
 
         /// <summary>

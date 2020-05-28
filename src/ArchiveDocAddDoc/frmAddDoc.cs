@@ -182,6 +182,12 @@ namespace ArchiveDocAddDoc
                 return;
             }
 
+            if ((int)dtResult.Rows[0]["id"] == -2)
+            {
+                MessageBox.Show(Config.centralText("Нет возможности сменить статус\nне соответствие условию смены\n!"), "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if ((int)dtResult.Rows[0]["id"] == -9999)
             {
                 MessageBox.Show("Произошла неведомая хрень.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Error);

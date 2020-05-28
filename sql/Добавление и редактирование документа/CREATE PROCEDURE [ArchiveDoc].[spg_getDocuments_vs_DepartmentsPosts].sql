@@ -7,7 +7,7 @@ GO
 -- Create date: 2020-04-25
 -- Description:	Получение тела документа
 -- =============================================
-CREATE PROCEDURE [ArchiveDoc].[spg_getDocuments_vs_DepartmentsPosts]		 
+ALTER PROCEDURE [ArchiveDoc].[spg_getDocuments_vs_DepartmentsPosts]		 
 	@id int
 AS
 BEGIN
@@ -15,7 +15,12 @@ BEGIN
 
 select 
 	id,
-	id_DepartmentsPosts 
+	id_DepartmentsPosts,
+	id_Documents,
+	ArchiveComment,
+	id_Status,
+	BaseDocumentsArchive,
+	isBrowse
 from 
 	ArchiveDoc.Documents_vs_DepartmentsPosts 
 where 
