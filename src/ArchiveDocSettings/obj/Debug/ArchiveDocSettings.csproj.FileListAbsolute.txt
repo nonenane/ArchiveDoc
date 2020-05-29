@@ -17,3 +17,4 @@ D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.s
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.dll
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.csprojAssemblyReference.cache

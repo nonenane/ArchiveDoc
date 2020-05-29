@@ -32,8 +32,6 @@
             this.trvDeps = new System.Windows.Forms.TreeView();
             this.trvPost = new System.Windows.Forms.TreeView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btDropFilter = new System.Windows.Forms.Button();
-            this.btFilter = new System.Windows.Forms.Button();
             this.tbNameDocuments = new System.Windows.Forms.TextBox();
             this.tbNamePosts = new System.Windows.Forms.TextBox();
             this.tbNameDeps = new System.Windows.Forms.TextBox();
@@ -47,6 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pViewDoc = new System.Windows.Forms.Panel();
+            this.btDictonaryPost = new System.Windows.Forms.Button();
             this.btAddDoc = new System.Windows.Forms.Button();
             this.btEditDoc = new System.Windows.Forms.Button();
             this.btDelDoc = new System.Windows.Forms.Button();
@@ -56,6 +55,8 @@
             this.btViewHisroty = new System.Windows.Forms.Button();
             this.btOpenFile = new System.Windows.Forms.Button();
             this.btDictonaryTypeDoc = new System.Windows.Forms.Button();
+            this.btDropFilter = new System.Windows.Forms.Button();
+            this.btFilter = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,28 +109,6 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Поиск";
-            // 
-            // btDropFilter
-            // 
-            this.btDropFilter.BackgroundImage = global::ArchiveDoc.Properties.Resources.filter_drop;
-            this.btDropFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btDropFilter.Location = new System.Drawing.Point(344, 72);
-            this.btDropFilter.Name = "btDropFilter";
-            this.btDropFilter.Size = new System.Drawing.Size(32, 32);
-            this.btDropFilter.TabIndex = 7;
-            this.btDropFilter.UseVisualStyleBackColor = true;
-            this.btDropFilter.Click += new System.EventHandler(this.btDropFilter_Click);
-            // 
-            // btFilter
-            // 
-            this.btFilter.BackgroundImage = global::ArchiveDoc.Properties.Resources.search;
-            this.btFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btFilter.Location = new System.Drawing.Point(344, 28);
-            this.btFilter.Name = "btFilter";
-            this.btFilter.Size = new System.Drawing.Size(32, 32);
-            this.btFilter.TabIndex = 7;
-            this.btFilter.UseVisualStyleBackColor = true;
-            this.btFilter.Click += new System.EventHandler(this.btFilter_Click);
             // 
             // tbNameDocuments
             // 
@@ -251,6 +230,18 @@
             this.pViewDoc.Size = new System.Drawing.Size(19, 19);
             this.pViewDoc.TabIndex = 6;
             // 
+            // btDictonaryPost
+            // 
+            this.btDictonaryPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDictonaryPost.BackgroundImage = global::ArchiveDoc.Properties.Resources.Post;
+            this.btDictonaryPost.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btDictonaryPost.Location = new System.Drawing.Point(807, 31);
+            this.btDictonaryPost.Name = "btDictonaryPost";
+            this.btDictonaryPost.Size = new System.Drawing.Size(66, 66);
+            this.btDictonaryPost.TabIndex = 11;
+            this.btDictonaryPost.UseVisualStyleBackColor = true;
+            this.btDictonaryPost.Click += new System.EventHandler(this.btDictonaryPost_Click);
+            // 
             // btAddDoc
             // 
             this.btAddDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -359,10 +350,33 @@
             this.btDictonaryTypeDoc.UseVisualStyleBackColor = true;
             this.btDictonaryTypeDoc.Click += new System.EventHandler(this.btDictonaryTypeDoc_Click);
             // 
+            // btDropFilter
+            // 
+            this.btDropFilter.BackgroundImage = global::ArchiveDoc.Properties.Resources.filter_drop;
+            this.btDropFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btDropFilter.Location = new System.Drawing.Point(344, 72);
+            this.btDropFilter.Name = "btDropFilter";
+            this.btDropFilter.Size = new System.Drawing.Size(32, 32);
+            this.btDropFilter.TabIndex = 7;
+            this.btDropFilter.UseVisualStyleBackColor = true;
+            this.btDropFilter.Click += new System.EventHandler(this.btDropFilter_Click);
+            // 
+            // btFilter
+            // 
+            this.btFilter.BackgroundImage = global::ArchiveDoc.Properties.Resources.search;
+            this.btFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btFilter.Location = new System.Drawing.Point(344, 28);
+            this.btFilter.Name = "btFilter";
+            this.btFilter.Size = new System.Drawing.Size(32, 32);
+            this.btFilter.TabIndex = 7;
+            this.btFilter.UseVisualStyleBackColor = true;
+            this.btFilter.Click += new System.EventHandler(this.btFilter_Click);
+            // 
             // cntDocuments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btDictonaryPost);
             this.Controls.Add(this.pViewDoc);
             this.Controls.Add(this.pNewDoc);
             this.Controls.Add(this.pUnActiveTypeDoc);
@@ -423,5 +437,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pViewDoc;
+        private System.Windows.Forms.Button btDictonaryPost;
     }
 }

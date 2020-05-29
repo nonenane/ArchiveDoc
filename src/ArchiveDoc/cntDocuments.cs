@@ -123,7 +123,6 @@ namespace ArchiveDoc
             //return node;
         }
 
-
         private void addNotePost(int id_deps, TreeNode parentNote)
         {
             EnumerableRowCollection<DataRow> rowCollect = dtPostVsDeps.AsEnumerable().Where(r => r.Field<int>("id_Departments") == id_deps);
@@ -261,22 +260,22 @@ namespace ArchiveDoc
 
         #endregion
 
-        public TreeNode previousSelectedNode = null;
+        //public TreeNode previousSelectedNode = null;
 
         private void trvDeps_Validating(object sender, CancelEventArgs e)
         {
             //trvDeps.SelectedNode.BackColor = SystemColors.Highlight;
             //trvDeps.SelectedNode.ForeColor = Color.White;
-            previousSelectedNode = trvDeps.SelectedNode;
+            //previousSelectedNode = trvDeps.SelectedNode;
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (previousSelectedNode != null)
-            {
-                previousSelectedNode.BackColor = trvDeps.SelectedNode.BackColor;
-                previousSelectedNode.ForeColor = trvDeps.SelectedNode.ForeColor;
-            }
+            //if (previousSelectedNode != null)
+            //{
+            //    previousSelectedNode.BackColor = trvDeps.SelectedNode.BackColor;
+            //    previousSelectedNode.ForeColor = trvDeps.SelectedNode.ForeColor;
+            //}
 
             //Console.WriteLine($"{e.Node.Text}   Id_Deps:{((Deps)e.Node.Tag).getIdDeps()}  Id_Post:{((Deps)e.Node.Tag).getIdPost()}   IsPost:{((Deps)e.Node.Tag).getIsPost()}");
             //getDocuments(((Deps)e.Node.Tag).getIdDeps(), ((Deps)e.Node.Tag).getIdPost(), ((Deps)e.Node.Tag).getIsPost(), true);
@@ -289,6 +288,8 @@ namespace ArchiveDoc
         private void getDataDocuments()
         {
             TreeNode node = trvDeps.SelectedNode;
+
+            if (node == null) return;
 
             getDocuments(((Deps)node.Tag).getIdDeps(), ((Deps)node.Tag).getIdPost(), ((Deps)node.Tag).getIsPost(), true);
         }
@@ -510,14 +511,21 @@ namespace ArchiveDoc
         }
 
         private void btNext_Click(object sender, EventArgs e)
-        {
+        {            
             if (trvPost.SelectedNode == null) return;
             object objSelectTag = trvPost.SelectedNode.Tag;
             if (objSelectTag == null) return;
             if (!(objSelectTag is Document)) return;
 
             if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 1)) return;
+            DialogResult dlgResult = new MyMessageBox.MyMessageBox("Вы хотите передать документ\n\"На ознакомление\"?", "Передать документ на ознакомление",
+                MyMessageBox.MessageBoxButtons.YesNo,
+                new List<string> { "Да", "Нет", "Отмена" }).ShowDialog();
+            if (dlgResult == DialogResult.No) return;
+
             if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 2)) return;
+
+
             getDataDocuments();
         }
 
@@ -529,7 +537,12 @@ namespace ArchiveDoc
             if (!(objSelectTag is Document)) return;
 
             if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 2)) return;
+
+            DialogResult dlgResult = new MyMessageBox.MyMessageBox("Вы хотите отозвать документ\n\"На ознакомление\" и сделать статус \"Новый\"?", "Отозвать документ", MyMessageBox.MessageBoxButtons.YesNo, new List<string> { "Да, отозвать", "Нет, не отзывать", "Отмена" }).ShowDialog();
+            if (dlgResult == DialogResult.No) return;
+
             if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 1)) return;
+
             getDataDocuments();
         }
 
@@ -543,6 +556,11 @@ namespace ArchiveDoc
             tbNameDeps.Clear();
             tbNameDocuments.Clear();
             tbNamePosts.Clear();
+        }
+
+        private void btDictonaryPost_Click(object sender, EventArgs e)
+        {
+            new ArchiveDocPost.frmList().ShowDialog();
         }
     }
 

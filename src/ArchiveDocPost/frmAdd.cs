@@ -10,12 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ArchiveDoc.post
+namespace ArchiveDocPost
 {
     public partial class frmAdd : Form
     {
         public DataRowView row { set; private get; }
-
 
         private bool isEditData = false;
         private string oldName;
@@ -32,15 +31,15 @@ namespace ArchiveDoc.post
         }
 
         private void frmAdd_Load(object sender, EventArgs e)
-        {
-            init_deps();
-
+        {           
             if (row != null)
             {
                 id = (int)row["id"];
                 tbName.Text = (string)row["cName"];
                 oldName = tbName.Text.Trim();
             }
+
+            init_deps();
 
             isEditData = false;
         }
@@ -86,6 +85,8 @@ namespace ArchiveDoc.post
                         }
                     }
                     dtDeps.AcceptChanges();
+                    dtDeps.DefaultView.Sort = "isSelect desc,name asc";
+                    dtDeps = dtDeps.DefaultView.ToTable().Copy();
                 }
                 dgvData.DataSource = dtDeps;
             }

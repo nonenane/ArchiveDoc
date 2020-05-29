@@ -109,7 +109,7 @@ namespace ArchiveDocAddDoc
 
             if (idResult == 1)
             {
-                MessageBox.Show(Config.centralText("Нет возможности сменить статус\nне соответствие условию смены\n!"), "Проверка статуса записи", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Config.centralText("Статус записи изменён\nдругим пользователем\n!"), "Проверка статуса записи", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -139,11 +139,11 @@ namespace ArchiveDocAddDoc
 
             if (result == -2)
             {
-                MessageBox.Show(Config.centralText("Нет возможности сменить статус\nне соответствие условию смены\n!"), "Проверка статуса записи", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Config.centralText("Статус записи изменён\nдругим пользователем\n!"), "Проверка статуса записи", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            if (DialogResult.Yes == MessageBox.Show("Удалить выбранную запись?", "Удаление записи", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+            if (DialogResult.Yes == MessageBox.Show("Вы хотите удалить документ?", "Удаление документа", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
             {
 
                 task = Config.hCntMain.setDocuments(id_Documents, "", "", null, 0, true, 1);

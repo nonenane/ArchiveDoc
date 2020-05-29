@@ -17,40 +17,7 @@ namespace ArchiveDoc
         {
         }
         ArrayList ap = new ArrayList();
-
-        #region "Справочник типов документов"
-
-        /// <summary>
-        /// Запись справочника типов отзывов
-        /// </summary>
-        /// <param name="id">Код записи</param>
-        /// <param name="cName">Наименование </param>
-        /// <param name="Abbreviation">Аббревиатура</param>
-        /// <param name="isActive">признак активности записи</param>  
-        /// <param name="isDel">Признак удаления записи</param>
-        /// <param name="result">Результирующая для проверки</param>
-        /// <returns>Таблица с данными</returns>
-        /// <param name="id">код созданной записи</param>
-
-        public async Task<DataTable> setPost(int id, string cName, bool isActive, bool isDel, int result)
-        {
-            ap.Clear();
-            ap.Add(id);
-            ap.Add(cName);
-            ap.Add(isActive);
-            ap.Add(Nwuram.Framework.Settings.User.UserSettings.User.Id);
-            ap.Add(result);
-            ap.Add(isDel);
-
-            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_setPost]",
-                 new string[6] { "@id", "@cName", "@isActive", "@id_user", "@result", "@isDel" },
-                 new DbType[6] { DbType.Int32, DbType.String,  DbType.Boolean, DbType.Int32, DbType.Int32, DbType.Boolean }, ap);
-
-            return dtResult;
-        }
-
-        #endregion
-
+       
         /// <summary>
         /// Получение справочника отделов
         /// </summary>
@@ -96,54 +63,7 @@ namespace ArchiveDoc
 
             return dtResult;
         }
-
-        /// <summary>
-        /// Получение справочника типов документов
-        /// </summary>
-        /// <param name=""></param>
-        /// <returns>Таблица с данными</returns>        
-        public async Task<DataTable> getPostLinkDep(int id)
-        {
-            ap.Clear();
-            ap.Add(id);
-
-            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_getPostLinkDep]",
-                 new string[1] { "@id" },
-                 new DbType[1] { DbType.Int32 }, ap);
-
-            return dtResult;
-        }
-
-        /// <summary>
-        /// Запись справочника типов отзывов
-        /// </summary>
-        /// <param name="id">Код записи</param>
-        /// <param name="cName">Наименование </param>
-        /// <param name="Abbreviation">Аббревиатура</param>
-        /// <param name="isActive">признак активности записи</param>  
-        /// <param name="isDel">Признак удаления записи</param>
-        /// <param name="result">Результирующая для проверки</param>
-        /// <returns>Таблица с данными</returns>
-        /// <param name="id">код созданной записи</param>
-
-        public async Task<DataTable> setPostLinkDep(int id, int id_Departments,int id_Posts, bool isActive, bool isDel, int result)
-        {
-            ap.Clear();
-            ap.Add(id);
-            ap.Add(id_Departments);
-            ap.Add(id_Posts);
-            ap.Add(isActive);
-            ap.Add(Nwuram.Framework.Settings.User.UserSettings.User.Id);
-            ap.Add(result);
-            ap.Add(isDel);
-
-            DataTable dtResult = executeProcedure("[ArchiveDoc].[spg_setPostLinkDep]",
-                 new string[7] { "@id", "@id_Departments", "@id_Posts", "@isActive", "@id_user", "@result", "@isDel" },
-                 new DbType[7] { DbType.Int32, DbType.Int32, DbType.Int32, DbType.Boolean, DbType.Int32, DbType.Int32, DbType.Boolean }, ap);
-
-            return dtResult;
-        }
-
+      
         /// <summary>
         /// Получение списка должностей по отделам
         /// </summary>
@@ -179,7 +99,6 @@ namespace ArchiveDoc
 
             return dtResult;
         }
-
 
         /// <summary>Получение списка документов для добавления в документ
         /// </summary>

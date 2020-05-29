@@ -24,7 +24,7 @@ namespace ArchiveDoc
    
         private void button3_Click(object sender, EventArgs e)
         {
-            new post.frmAdd() { Text = "Добавить должность" }.ShowDialog();
+            //new post.frmAdd() { Text = "Добавить должность" }.ShowDialog();
         }
      
         private void frmMain_Load(object sender, EventArgs e)

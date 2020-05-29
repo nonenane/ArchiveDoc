@@ -1,0 +1,10 @@
+D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.csprojAssemblyReference.cache
+D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.Properties.Resources.resources
+D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.csproj.GenerateResource.cache
+D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.csproj.CoreCompileInputs.cache
+D:\Работа\ArchiveDoc\src\MyMessageBox\bin\Debug\MyMessageBox.dll.config
+D:\Работа\ArchiveDoc\src\MyMessageBox\bin\Debug\MyMessageBox.dll
+D:\Работа\ArchiveDoc\src\MyMessageBox\bin\Debug\MyMessageBox.pdb
+D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.MyMessageBox.resources
+D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.dll
+D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.pdb

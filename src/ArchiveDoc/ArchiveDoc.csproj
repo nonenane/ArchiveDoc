@@ -67,12 +67,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="post\frmAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="post\frmAdd.Designer.cs">
-      <DependentUpon>frmAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Procedures.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,9 +75,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="post\frmAdd.resx">
-      <DependentUpon>frmAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\Post.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\filter-drop.png" />
     <None Include="Resources\undo.png" />
@@ -170,6 +162,10 @@
       <Project>{185ead00-8278-49a1-a352-58a389b01c32}</Project>
       <Name>ArchiveDocJournalStatusHistory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ArchiveDocPost\ArchiveDocPost.csproj">
+      <Project>{ed9fb6ce-7907-463c-8601-409d5230c525}</Project>
+      <Name>ArchiveDocPost</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ArchiveDocReport\ArchiveDocReport.csproj">
       <Project>{1e64707e-f484-4afa-8364-5302979e6ef8}</Project>
       <Name>ArchiveDocReport</Name>
@@ -177,6 +173,10 @@
     <ProjectReference Include="..\ArchiveDocSettings\ArchiveDocSettings.csproj">
       <Project>{a4580645-59a1-4b6c-b9cf-05b2ad97446c}</Project>
       <Name>ArchiveDocSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyMessageBox\MyMessageBox.csproj">
+      <Project>{dc6e3830-f202-44ef-8542-8804fd8b0e94}</Project>
+      <Name>MyMessageBox</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

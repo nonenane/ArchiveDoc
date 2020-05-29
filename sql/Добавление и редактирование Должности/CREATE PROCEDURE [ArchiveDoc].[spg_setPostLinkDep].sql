@@ -7,7 +7,7 @@ GO
 -- Create date: 2020-04-25
 -- Description:	Запись связи отдела и должности
 -- =============================================
-CREATE PROCEDURE [ArchiveDoc].[spg_setPostLinkDep]		 
+ALTER PROCEDURE [ArchiveDoc].[spg_setPostLinkDep]		 
 	@id int,
 	@id_Departments int,	
 	@id_Posts int,	
@@ -45,13 +45,13 @@ BEGIN TRY
 		BEGIN
 			IF @result = 0
 				BEGIN
-					IF NOT EXISTS(select TOP(1) id from [ArchiveDoc].[s_Posts] where id = @id)
+					IF NOT EXISTS(select TOP(1) id from [ArchiveDoc].[Departments_vs_Posts] where id = @id)
 						BEGIN
 							select -1 as id
 							return;
 						END
 					
-					IF EXISTS(select TOP(1) id from [ArchiveDoc].[s_Documents] where id_TypeDoc = @id)
+					IF EXISTS(select TOP(1) id from [ArchiveDoc].[Documents_vs_DepartmentsPosts] where id_DepartmentsPosts = @id)
 						BEGIN
 							select -2 as id
 							return;

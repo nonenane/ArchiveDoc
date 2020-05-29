@@ -7,7 +7,7 @@ GO
 -- Create date: 2020-04-25
 -- Description:	Запись справочника должностей
 -- =============================================
-CREATE PROCEDURE [ArchiveDoc].[spg_setPost]		 
+ALTER PROCEDURE [ArchiveDoc].[spg_setPost]		 
 	@id int,
 	@cName varchar(max),	
 	@isActive bit,
@@ -56,7 +56,7 @@ BEGIN TRY
 							return;
 						END
 					
-					IF EXISTS(select TOP(1) id from [ArchiveDoc].[s_Documents] where id_TypeDoc = @id)
+					IF EXISTS(select TOP(1) id from [ArchiveDoc].[Departments_vs_Posts] where id_Posts = @id)
 						BEGIN
 							select -2 as id
 							return;

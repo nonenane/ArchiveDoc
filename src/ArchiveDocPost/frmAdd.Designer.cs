@@ -1,4 +1,4 @@
-﻿namespace ArchiveDoc.post
+﻿namespace ArchiveDocPost
 {
     partial class frmAdd
     {
@@ -62,7 +62,7 @@
             // btSave
             // 
             this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSave.Image = global::ArchiveDoc.Properties.Resources.Save;
+            this.btSave.Image = global::ArchiveDocPost.Properties.Resources.Save;
             this.btSave.Location = new System.Drawing.Point(395, 504);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(32, 32);
@@ -73,7 +73,7 @@
             // btClose
             // 
             this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClose.Image = global::ArchiveDoc.Properties.Resources.Exit;
+            this.btClose.Image = global::ArchiveDocPost.Properties.Resources.Exit;
             this.btClose.Location = new System.Drawing.Point(433, 504);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(32, 32);

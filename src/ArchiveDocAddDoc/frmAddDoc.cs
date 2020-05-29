@@ -86,6 +86,10 @@ namespace ArchiveDocAddDoc
                                 rowCollect.First()["id_DocVsDepPosts"] = (int)row["id"];
                             }
                         }
+
+                        dtPostVsDeps.DefaultView.Sort = "isSelect desc, nameDeps asc, namePost asc";
+                        dtPostVsDeps = dtPostVsDeps.DefaultView.ToTable().Copy();
+                        dgvData.DataSource = dtPostVsDeps;
                     }
                 }
             }
