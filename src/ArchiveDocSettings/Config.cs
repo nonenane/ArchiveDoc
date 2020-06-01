@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Nwuram.Framework.Settings.Connection;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +70,22 @@ namespace ArchiveDocSettings
         public static void DoOnUIThread(MethodInvoker d, Form _this)
         {
             if (_this.InvokeRequired) { _this.Invoke(d); } else { d(); }
+        }
+    }
+
+    public class LinkToProcedures
+    {
+        public LinkToProcedures()
+        {
+            if (Config.hCntMain == null)
+                Config.hCntMain = new Procedures(ConnectionSettings.GetServer(), ConnectionSettings.GetDatabase(), ConnectionSettings.GetUsername(), ConnectionSettings.GetPassword(), ConnectionSettings.ProgramName);
+        }
+
+        public DataTable getDepartmentsAccessView(int id_deps)
+        {
+            Task<DataTable> task = Config.hCntMain.getDepartmentsAccessView(id_deps);
+            task.Wait();
+            return task.Result;
         }
     }
 }

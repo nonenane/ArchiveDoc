@@ -42,7 +42,13 @@ namespace ArchiveDoc
             myImageListDocument.Images.Add("pdf", Properties.Resources.pdf);
             myImageListDocument.Images.Add("png", Properties.Resources.png);
 
-            trvPost.ImageList = myImageListDocument;          
+            trvPost.ImageList = myImageListDocument;
+
+            //trvPost.MouseDown += (sender, args) =>
+            //        trvPost.SelectedNode = trvPost.GetNodeAt(args.X, args.Y);
+
+            trvPost.NodeMouseClick += (sender, args) => trvPost.SelectedNode = args.Node;
+            unEnablePostButton();
         }
 
         private void cntDocuments_Load(object sender, EventArgs e)
@@ -287,6 +293,7 @@ namespace ArchiveDoc
 
         private void getDataDocuments()
         {
+            unEnablePostButton();
             TreeNode node = trvDeps.SelectedNode;
 
             if (node == null) return;
@@ -333,8 +340,9 @@ namespace ArchiveDoc
             trvPost.Nodes.Clear();
             trvPost.BeginUpdate();
 
-            var groupTypeDoc = dtDocuments.AsEnumerable().GroupBy(r => new { id_TypeDoc = r.Field<int>("id_TypeDoc"), nameTypeDoc = r.Field<string>("nameTypeDoc"), isActive = r.Field<bool>("isActive") })
-                .Select(s => new { s.Key.id_TypeDoc, s.Key.nameTypeDoc,s.Key.isActive });
+            var groupTypeDoc = dtDocuments.AsEnumerable().GroupBy(r => new { id_TypeDoc = r.Field<int>("id_TypeDoc"), nameTypeDoc = r.Field<string>("nameTypeDoc"), isActive = r.Field<bool>("isActive"), npp = r.Field<int>("npp") })
+                .Select(s => new { s.Key.id_TypeDoc, s.Key.nameTypeDoc, s.Key.isActive, s.Key.npp })
+                .OrderBy(r => r.npp);
 
             foreach (var gTypeDoc in groupTypeDoc)
             {
@@ -410,6 +418,7 @@ namespace ArchiveDoc
                 ((Document)node.Tag).id_document = (int)row["idDoc"];
                 ((Document)node.Tag).id_documentVsPost = (int)row["id_documentVsPost"];
                 ((Document)node.Tag).id_Status = (int)row["id_Status"];
+                node.ContextMenuStrip = contextMenuStrip1;
 
                 if ((int)row["id_Status"] == 1)
                     node.BackColor = pNewDoc.BackColor;
@@ -506,7 +515,21 @@ namespace ArchiveDoc
             if (!(objSelectTag is Document)) return;
 
             if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 3)) return;
-            if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 4)) return;
+            //if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 4)) return;
+
+            DialogResult dlgResult = new MyMessageBox.MyMessageBox("Вы хотите заменить помещаемый\n\"В архив\" документ на новый?", "Перевод документа в архив",
+                MyMessageBox.MessageBoxButtons.YesNoCancel,
+                new List<string> { "Да, заменить на новый", "Нет, не заменять", "Отмена" }).ShowDialog();
+            if (dlgResult == DialogResult.Cancel) return;
+
+            if (DialogResult.OK == new ArchiveDocAddDoc.justification.frmAdd() { id_Document = ((Document)objSelectTag).id_document }.ShowDialog())
+            { }
+
+            if (DialogResult.Yes == dlgResult) {
+                if (DialogResult.OK == new ArchiveDocAddDoc.frmAddDoc() { Text = "Добавление документа",id_new = ((Document)objSelectTag).id_document }.ShowDialog())
+                    getDataDocuments();
+            }
+
             getDataDocuments();
         }
 
@@ -541,9 +564,14 @@ namespace ArchiveDoc
             DialogResult dlgResult = new MyMessageBox.MyMessageBox("Вы хотите отозвать документ\n\"На ознакомление\" и сделать статус \"Новый\"?", "Отозвать документ", MyMessageBox.MessageBoxButtons.YesNo, new List<string> { "Да, отозвать", "Нет, не отзывать", "Отмена" }).ShowDialog();
             if (dlgResult == DialogResult.No) return;
 
-            if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 1)) return;
+            if (DialogResult.OK == new ArchiveDocAddDoc.redoDocument.frmAdd() { id_Document = ((Document)objSelectTag).id_document }.ShowDialog())
+            {
+                getDataDocuments();
+            }
 
-            getDataDocuments();
+            //if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 1)) return;
+
+            
         }
 
         private void btFilter_Click(object sender, EventArgs e)
@@ -562,34 +590,93 @@ namespace ArchiveDoc
         {
             new ArchiveDocPost.frmList().ShowDialog();
         }
-    }
 
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btOpenFile_Click(null, null);
+        }
 
+        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btAddDoc_Click(null, null);
+        }
 
-    public class Deps
-    {
-        //private List<int> listDeps = new List<int>();
-        private int id_deps;
-        private bool isPost;
-        private int id_Post;
+        private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btEditDoc_Click(null, null);
+        }
 
-        public void setIdDeps(int id_deps){this.id_deps = id_deps;}
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btDelDoc_Click(null, null);
+        }
 
-        public int getIdDeps(){return this.id_deps;}
+        private void перевестиДокументВАрхивToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btToArchiv_Click(null, null);
+        }
 
-        public void setIsPost(bool isPost){ this.isPost = isPost; }
+        private void сменитьНаСтатусНаОзнакомленииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btNext_Click(null, null);
+        }
 
-        public bool getIsPost() { return this.isPost; }
+        private void отозватьСнаОзнакомленииНановыйToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btDown_Click(null, null);
+        }
 
-        public void setIdPost(int id_Post) { this.id_Post = id_Post; }
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            TreeNode node = trvPost.SelectedNode;
+            if (node == null) { e.Cancel = true;return; }         
+            object objSelectTag = trvPost.SelectedNode.Tag;
+            if (objSelectTag == null) { e.Cancel = true; return; }
+            if (!(objSelectTag is Document)) { e.Cancel = true; return; }
 
-        public int getIdPost() { return this.id_Post; }
-    }
+            редактироватьToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 1;
+            удалитьToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 1;
 
-    public class Document
-    {
-        public int id_document { get; set; }
-        public int id_documentVsPost { get; set; }
-        public int id_Status { get; set; }
-    }
+            перевестиДокументВАрхивToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 3;
+            сменитьНаСтатусНаОзнакомленииToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 1;
+            отозватьСнаОзнакомленииНановыйToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 2;           
+        }
+
+        private void журналСменыСтатусовДокументовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btViewHisroty_Click(null, null);
+        }
+
+        private void trvPost_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode node = trvPost.SelectedNode;
+
+            if (node == null || !(node.Tag is Document))
+            {
+                unEnablePostButton();
+                return;
+            }
+
+            object objSelectTag = trvPost.SelectedNode.Tag;
+
+            btEditDoc.Enabled = ((Document)objSelectTag).id_Status == 1;
+            btDelDoc.Enabled = ((Document)objSelectTag).id_Status == 1;
+            btDown.Enabled = ((Document)objSelectTag).id_Status == 2;
+            btNext.Enabled = ((Document)objSelectTag).id_Status == 1;
+            btToArchiv.Enabled = ((Document)objSelectTag).id_Status == 3;
+            btOpenFile.Enabled = true;
+            btViewHisroty.Enabled = true;
+        }
+
+        private void unEnablePostButton()        
+        {
+            btEditDoc.Enabled = false;
+            btDelDoc.Enabled = false;
+            btDown.Enabled = false;
+            btNext.Enabled = false;
+            btToArchiv.Enabled = false;
+            btOpenFile.Enabled = false;
+            btViewHisroty.Enabled = false;
+        }
+    }   
 }

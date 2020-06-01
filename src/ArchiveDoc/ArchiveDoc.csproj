@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cntDocumentsRKV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cntDocumentsRKV.Designer.cs">
+      <DependentUpon>cntDocumentsRKV.cs</DependentUpon>
+    </Compile>
     <Compile Include="cntDocuments.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="Procedures.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="cntDocumentsRKV.resx">
+      <DependentUpon>cntDocumentsRKV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cntDocuments.resx">
       <DependentUpon>cntDocuments.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\like.png" />
     <None Include="Resources\Post.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\filter-drop.png" />

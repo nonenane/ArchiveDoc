@@ -182,6 +182,46 @@ namespace ArchiveDocAddDoc
                         (int)row["id_DepartmentsPosts"],
                         id_Documents,
                         id_status,
+                        false,//(bool)row["isBrowse"],
+                        false,
+                        0
+                    );
+
+                task.Wait();
+
+                if (task.Result == null)
+                {
+                    MessageBox.Show(Config.centralText("При сохранение данных возникли ошибки записи.\nОбратитесь в ОЭЭС\n"), "Сохранение данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool setStatusSingleDocument(int id_Documents,int id_documentVsPost, int id_status)
+        {
+            Task<DataTable> task = Config.hCntMain.getDocuments_vs_DepartmentsPosts(id_Documents);
+            task.Wait();
+
+            if (task.Result == null)
+            {
+                MessageBox.Show(Config.centralText("При сохранение данных возникли ошибки записи.\nОбратитесь в ОЭЭС\n"), "Сохранение данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            DataTable dtData = task.Result;
+            EnumerableRowCollection<DataRow> rowCollect = dtData.AsEnumerable().Where(r => r.Field<int>("id") == id_documentVsPost);
+
+            foreach (DataRow row in rowCollect)
+            {
+                task = Config.hCntMain.setDocuments_vs_DepartmentsPosts(
+                    (int)row["id"],
+                        (string)row["ArchiveComment"],
+                        (string)row["BaseDocumentsArchive"],
+                        (int)row["id_DepartmentsPosts"],
+                        id_Documents,
+                        id_status,
                         (bool)row["isBrowse"],
                         false,
                         0
@@ -194,6 +234,21 @@ namespace ArchiveDocAddDoc
                     MessageBox.Show(Config.centralText("При сохранение данных возникли ошибки записи.\nОбратитесь в ОЭЭС\n"), "Сохранение данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
+            }
+
+            return true;
+        }
+
+        public bool setBrowseDocument(int id_documentVsPost)
+        {
+            Task<DataTable> task = Config.hCntMain.setBrowseDocument(id_documentVsPost);
+
+            task.Wait();
+
+            if (task.Result == null)
+            {
+                MessageBox.Show(Config.centralText("При сохранение данных возникли ошибки записи.\nОбратитесь в ОЭЭС\n"), "Сохранение данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             return true;

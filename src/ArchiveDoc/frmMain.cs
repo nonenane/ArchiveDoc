@@ -43,7 +43,11 @@ namespace ArchiveDoc
             tpReport.ImageKey = "Report";
             //panel1.Controls.Add(new ArchiveDocSettings.settings() {Dock =DockStyle.Fill });
             //panel1.Controls.Add(new ArchiveDocReport.ctrReport() { Dock = DockStyle.Fill });
-            tpMain.Controls.Add(new cntDocuments() { Dock = DockStyle.Fill });
+            if (Nwuram.Framework.Settings.User.UserSettings.User.StatusCode.ToLower().Equals("ркв"))
+                tpMain.Controls.Add(new cntDocumentsRKV() { Dock = DockStyle.Fill });
+            else
+                tpMain.Controls.Add(new cntDocuments() { Dock = DockStyle.Fill });
+
             tpSettings.Controls.Add(new ArchiveDocSettings.settings() { Dock = DockStyle.Fill });
             tpReport.Controls.Add(new ArchiveDocReport.ctrReport() { Dock = DockStyle.Fill });
         }

@@ -17,6 +17,7 @@ namespace ArchiveDocAddDoc
     {
         //public DataRowView row { set; private get; }
         public int id { set; private get; }
+        public int id_new { set; private get; }
 
         private bool isEditData = false;
         private string oldName, oldNpp;
@@ -64,33 +65,47 @@ namespace ArchiveDocAddDoc
 
             if (id != 0)
             {
-                Task<DataTable> task = Config.hCntMain.getDocuments(id);
+                loadData(id);
+            }
+            else if (id_new != 0)
+            {
+                loadData(id_new);
+                Task<DataTable> task = Config.hCntMain.getDocumentBytes(id_new);
+                task.Wait();
+                if (task.Result == null || task.Result.Rows.Count == 0 || task.Result.Rows[0]["DocFile"] == DBNull.Value) return;
+
+                fileBytes = (byte[])task.Result.Rows[0]["DocFile"];
+            }
+        }
+
+        private void loadData(int id)
+        {
+            Task<DataTable> task = Config.hCntMain.getDocuments(id);
+            task.Wait();
+            if (task.Result != null && task.Result.Rows.Count > 0)
+            {
+                cmbTypeDoc.SelectedValue = (int)task.Result.Rows[0]["id_TypeDoc"];
+                tbNameDoc.Text = (string)task.Result.Rows[0]["cName"];
+                tbFileName.Text = Path.GetFileNameWithoutExtension((string)task.Result.Rows[0]["FileName"]);
+                fileName = (string)task.Result.Rows[0]["FileName"];
+
+                task = Config.hCntMain.getDocuments_vs_DepartmentsPosts(id);
                 task.Wait();
                 if (task.Result != null && task.Result.Rows.Count > 0)
                 {
-                    cmbTypeDoc.SelectedValue = (int)task.Result.Rows[0]["id_TypeDoc"];
-                    tbNameDoc.Text = (string)task.Result.Rows[0]["cName"];
-                    tbFileName.Text = Path.GetFileNameWithoutExtension((string)task.Result.Rows[0]["FileName"]);
-                    fileName = (string)task.Result.Rows[0]["FileName"];
-
-                    task = Config.hCntMain.getDocuments_vs_DepartmentsPosts(id);
-                    task.Wait();
-                    if (task.Result != null && task.Result.Rows.Count > 0)
+                    foreach (DataRow row in task.Result.Rows)
                     {
-                        foreach (DataRow row in task.Result.Rows)
+                        EnumerableRowCollection<DataRow> rowCollect = dtPostVsDeps.AsEnumerable().Where(r => r.Field<int>("id") == (int)row["id_DepartmentsPosts"]);
+                        if (rowCollect.Count() > 0)
                         {
-                            EnumerableRowCollection<DataRow> rowCollect = dtPostVsDeps.AsEnumerable().Where(r => r.Field<int>("id") == (int)row["id_DepartmentsPosts"]);
-                            if (rowCollect.Count() > 0)
-                            {
-                                rowCollect.First()["isSelect"] = true;
-                                rowCollect.First()["id_DocVsDepPosts"] = (int)row["id"];
-                            }
+                            rowCollect.First()["isSelect"] = true;
+                            if (this.id != 0) rowCollect.First()["id_DocVsDepPosts"] = (int)row["id"];
                         }
-
-                        dtPostVsDeps.DefaultView.Sort = "isSelect desc, nameDeps asc, namePost asc";
-                        dtPostVsDeps = dtPostVsDeps.DefaultView.ToTable().Copy();
-                        dgvData.DataSource = dtPostVsDeps;
                     }
+
+                    dtPostVsDeps.DefaultView.Sort = "isSelect desc, nameDeps asc, namePost asc";
+                    dtPostVsDeps = dtPostVsDeps.DefaultView.ToTable().Copy();
+                    dgvData.DataSource = dtPostVsDeps;
                 }
             }
         }
@@ -154,17 +169,11 @@ namespace ArchiveDocAddDoc
             EnumerableRowCollection<DataRow> rowCollect = dtPostVsDeps.AsEnumerable().Where(r => r.Field<bool>("isSelect"));
             if (rowCollect.Count() == 0) { MessageBox.Show("Необходимо выбрать должность.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
+            DialogResult dlgResult = new MyMessageBox.MyMessageBox("Выберите статус добавляемого документа:", "Добавление документа",
+              MyMessageBox.MessageBoxButtons.YesNoCancel,
+              new List<string> { "Новый", "На ознакомлении", "Отмена" }).ShowDialog();
 
-
-            MessageBoxManager.Unregister();
-            MessageBoxManager.Yes = "Новый";
-            MessageBoxManager.No= "Ознакомление";
-            MessageBoxManager.Cancel = "Отмена";
-            MessageBoxManager.Register();
-            DialogResult dlgResult = MessageBox.Show("Выберите статус добавляемого документа:", "Добавление документа", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
-            MessageBoxManager.Unregister();
-
-            if (DialogResult.Cancel == dlgResult) return;
+            if (dlgResult == DialogResult.Cancel) return;
             int id_status = 1;
             if (DialogResult.No == dlgResult) id_status = 2;
 

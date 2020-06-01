@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.chbUnActivePost = new System.Windows.Forms.CheckBox();
             this.trvDeps = new System.Windows.Forms.TreeView();
             this.trvPost = new System.Windows.Forms.TreeView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btDropFilter = new System.Windows.Forms.Button();
+            this.btFilter = new System.Windows.Forms.Button();
             this.tbNameDocuments = new System.Windows.Forms.TextBox();
             this.tbNamePosts = new System.Windows.Forms.TextBox();
             this.tbNameDeps = new System.Windows.Forms.TextBox();
@@ -55,9 +58,18 @@
             this.btViewHisroty = new System.Windows.Forms.Button();
             this.btOpenFile = new System.Windows.Forms.Button();
             this.btDictonaryTypeDoc = new System.Windows.Forms.Button();
-            this.btDropFilter = new System.Windows.Forms.Button();
-            this.btFilter = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.перевестиДокументВАрхивToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменитьНаСтатусНаОзнакомленииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отозватьСнаОзнакомленииНановыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.документToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.журналСменыСтатусовДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chbUnActivePost
@@ -92,6 +104,7 @@
             this.trvPost.Name = "trvPost";
             this.trvPost.Size = new System.Drawing.Size(499, 467);
             this.trvPost.TabIndex = 3;
+            this.trvPost.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvPost_AfterSelect);
             // 
             // groupBox1
             // 
@@ -109,6 +122,28 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Поиск";
+            // 
+            // btDropFilter
+            // 
+            this.btDropFilter.BackgroundImage = global::ArchiveDoc.Properties.Resources.filter_drop;
+            this.btDropFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btDropFilter.Location = new System.Drawing.Point(344, 72);
+            this.btDropFilter.Name = "btDropFilter";
+            this.btDropFilter.Size = new System.Drawing.Size(32, 32);
+            this.btDropFilter.TabIndex = 7;
+            this.btDropFilter.UseVisualStyleBackColor = true;
+            this.btDropFilter.Click += new System.EventHandler(this.btDropFilter_Click);
+            // 
+            // btFilter
+            // 
+            this.btFilter.BackgroundImage = global::ArchiveDoc.Properties.Resources.search;
+            this.btFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btFilter.Location = new System.Drawing.Point(344, 28);
+            this.btFilter.Name = "btFilter";
+            this.btFilter.Size = new System.Drawing.Size(32, 32);
+            this.btFilter.TabIndex = 7;
+            this.btFilter.UseVisualStyleBackColor = true;
+            this.btFilter.Click += new System.EventHandler(this.btFilter_Click);
             // 
             // tbNameDocuments
             // 
@@ -350,27 +385,84 @@
             this.btDictonaryTypeDoc.UseVisualStyleBackColor = true;
             this.btDictonaryTypeDoc.Click += new System.EventHandler(this.btDictonaryTypeDoc_Click);
             // 
-            // btDropFilter
+            // contextMenuStrip1
             // 
-            this.btDropFilter.BackgroundImage = global::ArchiveDoc.Properties.Resources.filter_drop;
-            this.btDropFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btDropFilter.Location = new System.Drawing.Point(344, 72);
-            this.btDropFilter.Name = "btDropFilter";
-            this.btDropFilter.Size = new System.Drawing.Size(32, 32);
-            this.btDropFilter.TabIndex = 7;
-            this.btDropFilter.UseVisualStyleBackColor = true;
-            this.btDropFilter.Click += new System.EventHandler(this.btDropFilter_Click);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьToolStripMenuItem,
+            this.документToolStripMenuItem,
+            this.перевестиДокументВАрхивToolStripMenuItem,
+            this.сменитьНаСтатусНаОзнакомленииToolStripMenuItem,
+            this.отозватьСнаОзнакомленииНановыйToolStripMenuItem,
+            this.журналСменыСтатусовДокументовToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(312, 136);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
-            // btFilter
+            // открытьToolStripMenuItem
             // 
-            this.btFilter.BackgroundImage = global::ArchiveDoc.Properties.Resources.search;
-            this.btFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btFilter.Location = new System.Drawing.Point(344, 28);
-            this.btFilter.Name = "btFilter";
-            this.btFilter.Size = new System.Drawing.Size(32, 32);
-            this.btFilter.TabIndex = 7;
-            this.btFilter.UseVisualStyleBackColor = true;
-            this.btFilter.Click += new System.EventHandler(this.btFilter_Click);
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
+            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
+            // 
+            // перевестиДокументВАрхивToolStripMenuItem
+            // 
+            this.перевестиДокументВАрхивToolStripMenuItem.Name = "перевестиДокументВАрхивToolStripMenuItem";
+            this.перевестиДокументВАрхивToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
+            this.перевестиДокументВАрхивToolStripMenuItem.Text = "Перевести документ в архив";
+            this.перевестиДокументВАрхивToolStripMenuItem.Click += new System.EventHandler(this.перевестиДокументВАрхивToolStripMenuItem_Click);
+            // 
+            // сменитьНаСтатусНаОзнакомленииToolStripMenuItem
+            // 
+            this.сменитьНаСтатусНаОзнакомленииToolStripMenuItem.Name = "сменитьНаСтатусНаОзнакомленииToolStripMenuItem";
+            this.сменитьНаСтатусНаОзнакомленииToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
+            this.сменитьНаСтатусНаОзнакомленииToolStripMenuItem.Text = "Сменить на статус «На ознакомлении»";
+            this.сменитьНаСтатусНаОзнакомленииToolStripMenuItem.Click += new System.EventHandler(this.сменитьНаСтатусНаОзнакомленииToolStripMenuItem_Click);
+            // 
+            // отозватьСнаОзнакомленииНановыйToolStripMenuItem
+            // 
+            this.отозватьСнаОзнакомленииНановыйToolStripMenuItem.Name = "отозватьСнаОзнакомленииНановыйToolStripMenuItem";
+            this.отозватьСнаОзнакомленииНановыйToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
+            this.отозватьСнаОзнакомленииНановыйToolStripMenuItem.Text = "Отозвать с «на ознакомлении» на «новый»";
+            this.отозватьСнаОзнакомленииНановыйToolStripMenuItem.Click += new System.EventHandler(this.отозватьСнаОзнакомленииНановыйToolStripMenuItem_Click);
+            // 
+            // документToolStripMenuItem
+            // 
+            this.документToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьToolStripMenuItem,
+            this.редактироватьToolStripMenuItem,
+            this.удалитьToolStripMenuItem});
+            this.документToolStripMenuItem.Name = "документToolStripMenuItem";
+            this.документToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
+            this.документToolStripMenuItem.Text = "Документ";
+            // 
+            // добавитьToolStripMenuItem
+            // 
+            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.добавитьToolStripMenuItem.Text = "Добавить";
+            this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.добавитьToolStripMenuItem_Click);
+            // 
+            // редактироватьToolStripMenuItem
+            // 
+            this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
+            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.редактироватьToolStripMenuItem.Text = "Редактировать";
+            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
+            // 
+            // журналСменыСтатусовДокументовToolStripMenuItem
+            // 
+            this.журналСменыСтатусовДокументовToolStripMenuItem.Name = "журналСменыСтатусовДокументовToolStripMenuItem";
+            this.журналСменыСтатусовДокументовToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
+            this.журналСменыСтатусовДокументовToolStripMenuItem.Text = "Журнал смены статусов документов";
+            this.журналСменыСтатусовДокументовToolStripMenuItem.Click += new System.EventHandler(this.журналСменыСтатусовДокументовToolStripMenuItem_Click);
             // 
             // cntDocuments
             // 
@@ -402,6 +494,7 @@
             this.Load += new System.EventHandler(this.cntDocuments_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,5 +531,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pViewDoc;
         private System.Windows.Forms.Button btDictonaryPost;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem перевестиДокументВАрхивToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сменитьНаСтатусНаОзнакомленииToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отозватьСнаОзнакомленииНановыйToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem документToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem журналСменыСтатусовДокументовToolStripMenuItem;
     }
 }

@@ -17,3 +17,8 @@ D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.dll
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.frmAddDoc.resources
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.frmSelectDocuments.resources
+D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\MyMessageBox.dll
+D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\MyMessageBox.pdb
+D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\MyMessageBox.dll.config
+D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.justification.frmAdd.resources
+D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.redoDocument.frmAdd.resources

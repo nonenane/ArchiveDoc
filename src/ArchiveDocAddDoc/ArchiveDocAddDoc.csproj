@@ -67,13 +67,28 @@
     <Compile Include="frmSelectDocuments.Designer.cs">
       <DependentUpon>frmSelectDocuments.cs</DependentUpon>
     </Compile>
+    <Compile Include="justification\frmAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="justification\frmAdd.Designer.cs">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procedures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="redoDocument\frmAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="redoDocument\frmAdd.Designer.cs">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmAddDoc.resx">
       <DependentUpon>frmAddDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelectDocuments.resx">
       <DependentUpon>frmSelectDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="justification\frmAdd.resx">
+      <DependentUpon>frmAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,6 +100,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="redoDocument\frmAdd.resx">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyMessageBox\MyMessageBox.csproj">
+      <Project>{dc6e3830-f202-44ef-8542-8804fd8b0e94}</Project>
+      <Name>MyMessageBox</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

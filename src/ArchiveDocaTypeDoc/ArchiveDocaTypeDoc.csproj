@@ -122,5 +122,11 @@
   <ItemGroup>
     <None Include="Resources\Save.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyMessageBox\MyMessageBox.csproj">
+      <Project>{dc6e3830-f202-44ef-8542-8804fd8b0e94}</Project>
+      <Name>MyMessageBox</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

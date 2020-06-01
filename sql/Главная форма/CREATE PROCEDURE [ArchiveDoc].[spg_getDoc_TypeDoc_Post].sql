@@ -26,7 +26,11 @@ select
 	p.cName as namePost,
 	dd.id as id_documentVsPost,
 	d.[FileName],
-	td.isActive 
+	td.isActive,
+	td.ViewArchive,
+	td.npp,
+	dd.isBrowse,
+	dp.id_Departments
 	
 from 
 	ArchiveDoc.Documents_vs_DepartmentsPosts dd

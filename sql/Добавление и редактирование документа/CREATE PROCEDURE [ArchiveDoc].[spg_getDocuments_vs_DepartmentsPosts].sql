@@ -14,16 +14,18 @@ BEGIN
 	SET NOCOUNT ON;
 
 select 
-	id,
-	id_DepartmentsPosts,
-	id_Documents,
-	ArchiveComment,
-	id_Status,
-	BaseDocumentsArchive,
-	isBrowse
+	dd.id,
+	dd.id_DepartmentsPosts,
+	dd.id_Documents,
+	dd.ArchiveComment,
+	dd.id_Status,
+	dd.BaseDocumentsArchive,
+	dd.isBrowse,
+	s.cName as nameStatus
 from 
-	ArchiveDoc.Documents_vs_DepartmentsPosts 
+	ArchiveDoc.Documents_vs_DepartmentsPosts dd
+		left join ArchiveDoc.s_Status s on s.id = dd.id_Status
 where 
-	id_Documents = @id
+	dd.id_Documents = @id
 
 END

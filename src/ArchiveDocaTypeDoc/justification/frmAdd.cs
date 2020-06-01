@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nwuram.Framework.Settings.Connection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,13 @@ namespace ArchiveDocaTypeDoc.justification
 {
     public partial class frmAdd : Form
     {
-        public int id_TypeDoc { set; private get; }
+        public int id_TypeDoc { set; private get; }        
         public frmAdd()
         {
             InitializeComponent();
+            if (Config.hCntMain == null)
+                Config.hCntMain = new Procedures(ConnectionSettings.GetServer(), ConnectionSettings.GetDatabase(), ConnectionSettings.GetUsername(), ConnectionSettings.GetPassword(), ConnectionSettings.ProgramName);
+
         }
 
         private void frmAdd_Load(object sender, EventArgs e)

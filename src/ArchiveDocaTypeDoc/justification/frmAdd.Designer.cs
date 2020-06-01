@@ -40,7 +40,7 @@
             // tbNumber
             // 
             this.tbNumber.Location = new System.Drawing.Point(11, 25);
-            this.tbNumber.MaxLength = 10;
+            this.tbNumber.MaxLength = 150;
             this.tbNumber.Name = "tbNumber";
             this.tbNumber.Size = new System.Drawing.Size(489, 20);
             this.tbNumber.TabIndex = 7;
@@ -65,11 +65,12 @@
             // 
             // tbComment
             // 
-            this.tbComment.Location = new System.Drawing.Point(100, 51);
-            this.tbComment.MaxLength = 10;
+            this.tbComment.Location = new System.Drawing.Point(11, 69);
+            this.tbComment.MaxLength = 500;
             this.tbComment.Multiline = true;
             this.tbComment.Name = "tbComment";
-            this.tbComment.Size = new System.Drawing.Size(402, 171);
+            this.tbComment.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbComment.Size = new System.Drawing.Size(491, 153);
             this.tbComment.TabIndex = 7;
             // 
             // btSave

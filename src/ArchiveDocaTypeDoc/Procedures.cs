@@ -87,7 +87,7 @@ namespace ArchiveDocaTypeDoc
         public async Task<DataTable> setJustification(int id_TypeDoc, string ArchiveComment, string BaseDocumentsArchive)
         {
             ap.Clear();
-            ap.Add(id_TypeDoc);
+            ap.Add(id_TypeDoc);            
             ap.Add(Nwuram.Framework.Settings.User.UserSettings.User.Id);
             ap.Add(ArchiveComment);
             ap.Add(BaseDocumentsArchive);

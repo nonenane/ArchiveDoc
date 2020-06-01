@@ -89,17 +89,12 @@ namespace ArchiveDocaTypeDoc
 
 
                 if (result == -2 && isActive)
-                {                    
-                    MessageBoxManager.Unregister();
-                    MessageBoxManager.Yes = "Да,в архив";
-                    MessageBoxManager.No= "Нет,не архив";
-                    MessageBoxManager.Cancel = "Отмена";
-                    MessageBoxManager.Register();
-                    DialogResult dlgResult = MessageBox.Show("В программе присутствуют документы с удаляемым типом.\nВы хотите перевести документы в статус 'Архив'?", "Удаление типа документа", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
-                    MessageBoxManager.Unregister();
-
+                {
+                    DialogResult dlgResult = new MyMessageBox.MyMessageBox("В программе присутствуют документы\n с удаляемым типом.\nВы хотите перевести документы\n в статус \"Архив\"?", "Удаление типа документа",
+                     MyMessageBox.MessageBoxButtons.YesNoCancel,
+                        new List<string> { "Да, в архив", "Нет, не в архив", "Отмена" }).ShowDialog();
                     if (dlgResult == DialogResult.Cancel) return;
-
+                  
                     if (dlgResult == DialogResult.Yes)
                         if (DialogResult.OK == new justification.frmAdd() { id_TypeDoc = id }.ShowDialog())
                         {
