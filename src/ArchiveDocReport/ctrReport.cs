@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nwuram.Framework.Settings.Connection;
+using Nwuram.Framework.Settings.User;
 
 namespace ArchiveDocReport
 {
     public partial class ctrReport : UserControl
     {
-        DataTable dtPostVsDeps;
+        private DataTable dtPostVsDeps, dtDepsLinkToDep;
+        ArchiveDocSettings.LinkToProcedures linkToProcSettings = new ArchiveDocSettings.LinkToProcedures();
 
         public ctrReport()
         {
@@ -30,6 +32,10 @@ namespace ArchiveDocReport
 
         private void ctrReport_Load(object sender, EventArgs e)
         {
+            if (UserSettings.User.StatusCode.ToLower().Equals("ркв"))
+                dtDepsLinkToDep = linkToProcSettings.getDepartmentsAccessView(UserSettings.User.IdDepartment);
+
+
             get_typeDoc();
             init_depsCombobox();
             init_postCombobox();
@@ -43,6 +49,34 @@ namespace ArchiveDocReport
             task.Wait();
             if (task.Result != null && task.Result.Rows.Count > 0)
             { dtDeps = task.Result.Copy(); task = null; }
+
+            if (UserSettings.User.StatusCode.ToLower().Equals("ркв"))
+            {
+                if (dtDepsLinkToDep == null)
+                {
+                    EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == 0);
+                    dtDeps = rowCollect.CopyToDataTable();
+                }
+                else
+                {
+                    DataTable dtTmp = dtDeps.Clone();
+
+                    EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == 0);
+                    dtTmp.Merge(rowCollect.CopyToDataTable());
+
+                    foreach (DataRow row in dtDepsLinkToDep.Rows)
+                    {
+                        rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == (int)row["id_DepartmentsView"]);
+                        if (rowCollect.Count() > 0)
+                        {
+                            dtTmp.ImportRow(rowCollect.First());
+                        }
+                    }
+
+                    dtTmp.DefaultView.Sort = "isMain asc, name asc";
+                    dtDeps = dtTmp.DefaultView.ToTable().Copy();
+                }
+            }
 
             cmbDeps.DataSource = dtDeps;
             cmbDeps.DisplayMember = "name";
@@ -73,6 +107,22 @@ namespace ArchiveDocReport
             task.Wait();
 
             dtPostVsDeps = task.Result;
+
+            if (UserSettings.User.StatusCode.ToLower().Equals("ркв"))
+            {
+                DataTable dtTmp = dtPostVsDeps.Clone();
+                foreach (DataRow row in dtDepsLinkToDep.Rows)
+                {
+                    EnumerableRowCollection<DataRow> rowToReport = task.Result.AsEnumerable().Where(r => r.Field<int>("id_Departments") == (int)row["id_DepartmentsView"]);
+                    if (rowToReport.Count() > 0)
+                    {
+                        dtTmp.Merge(rowToReport.CopyToDataTable());
+                    }
+                }
+
+                dtPostVsDeps = dtTmp.Copy();
+            }
+
             setFilter();
             dgvData.DataSource = dtPostVsDeps;
         }
@@ -108,7 +158,6 @@ namespace ArchiveDocReport
                 //btSave.Enabled = dtPostVsDeps.DefaultView.Count != 0;
             }
         }
-
 
         private void get_typeDoc()
         {
@@ -152,7 +201,21 @@ namespace ArchiveDocReport
                     }
                 }
             }
-            else dtReport = task.Result.Copy();
+            else if (UserSettings.User.StatusCode.ToLower().Equals("ркв"))
+            {
+                foreach (DataRow row in dtDepsLinkToDep.Rows)
+                {
+                    EnumerableRowCollection<DataRow> rowToReport = task.Result.AsEnumerable().Where(r => r.Field<int>("id_Departments") == (int)row["id_DepartmentsView"]);
+                    if (rowToReport.Count() > 0)
+                    {
+                        dtReport.Merge(rowToReport.CopyToDataTable());
+                    }
+                }
+            }
+            else
+            {
+                dtReport = task.Result.Copy();
+            }
 
             if(dtReport.Rows.Count==0) { MessageBox.Show("Нет данных для отчёта!", "Информирование", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 

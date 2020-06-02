@@ -49,6 +49,21 @@ namespace ArchiveDoc
 
             trvPost.NodeMouseClick += (sender, args) => trvPost.SelectedNode = args.Node;
             unEnablePostButton();
+
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(btNext, "Отправить на ознакомление");
+            tp.SetToolTip(btOpenFile, "Открыть");
+            tp.SetToolTip(btFilter, "Фильтрация");
+            tp.SetToolTip(btDropFilter, "Сбросить фильтр");
+            tp.SetToolTip(btAddDoc, "Добавить документ");
+            tp.SetToolTip(btEditDoc, "Редактировать документ");
+            tp.SetToolTip(btDelDoc, "Удалить документ");
+
+            tp.SetToolTip(btDictonaryPost, "Справочник Должностей");
+            tp.SetToolTip(btDictonaryTypeDoc, "Справочник типов документов");
+            tp.SetToolTip(btViewHisroty, "Журнал смены статусов");
+            tp.SetToolTip(btDown, "Отозвать документ");
+            tp.SetToolTip(btToArchiv, "В архив");
         }
 
         private void cntDocuments_Load(object sender, EventArgs e)

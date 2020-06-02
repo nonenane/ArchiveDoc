@@ -92,5 +92,11 @@
   <ItemGroup>
     <None Include="Resources\Print.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArchiveDocSettings\ArchiveDocSettings.csproj">
+      <Project>{a4580645-59a1-4b6c-b9cf-05b2ad97446c}</Project>
+      <Name>ArchiveDocSettings</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

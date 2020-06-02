@@ -30,3 +30,9 @@ C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocRe
 C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csproj.CopyComplete
 C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.dll
 C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocSettings.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocExtensionsFile.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocSettings.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocSettings.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocExtensionsFile.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocExtensionsFile.dll.config

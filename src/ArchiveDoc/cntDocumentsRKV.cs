@@ -48,8 +48,14 @@ namespace ArchiveDoc
             //trvPost.MouseDown += (sender, args) =>
             //        trvPost.SelectedNode = trvPost.GetNodeAt(args.X, args.Y);
 
-            trvPost.NodeMouseClick += (sender, args) => trvPost.SelectedNode = args.Node;
+            //trvPost.NodeMouseClick += (sender, args) => trvPost.SelectedNode = args.Node;
             unEnablePostButton();
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(btNext, "Подтвердить");
+            tp.SetToolTip(btOpenFile, "Открыть");
+            tp.SetToolTip(btFilter, "Фильтрация");
+            tp.SetToolTip(btDropFilter, "Сбросить фильтр");
+            
         }
 
         private void cntDocuments_Load(object sender, EventArgs e)
@@ -414,8 +420,7 @@ namespace ArchiveDoc
                 ((Document)node.Tag).id_Status = (int)row["id_Status"];
                 ((Document)node.Tag).isBrowse = (bool)row["isBrowse"];
                 ((Document)node.Tag).isWorkDep = (int)row["id_Departments"] == UserSettings.User.IdDepartment;
-                node.ContextMenuStrip = contextMenuStrip1;
-
+                
                 if ((int)row["id_Status"] == 2) node.BackColor = pViewDoc.BackColor;
 
                 parentNode.Nodes.Add(node);
@@ -581,68 +586,7 @@ namespace ArchiveDoc
             tbNameDocuments.Clear();
             tbNamePosts.Clear();
         }
-
-        private void btDictonaryPost_Click(object sender, EventArgs e)
-        {
-            new ArchiveDocPost.frmList().ShowDialog();
-        }
-
-        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btOpenFile_Click(null, null);
-        }
-
-        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btAddDoc_Click(null, null);
-        }
-
-        private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btEditDoc_Click(null, null);
-        }
-
-        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btDelDoc_Click(null, null);
-        }
-
-        private void перевестиДокументВАрхивToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btToArchiv_Click(null, null);
-        }
-
-        private void сменитьНаСтатусНаОзнакомленииToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btNext_Click(null, null);
-        }
-
-        private void отозватьСнаОзнакомленииНановыйToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btDown_Click(null, null);
-        }
-
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-            TreeNode node = trvPost.SelectedNode;
-            if (node == null) { e.Cancel = true;return; }         
-            object objSelectTag = trvPost.SelectedNode.Tag;
-            if (objSelectTag == null) { e.Cancel = true; return; }
-            if (!(objSelectTag is Document)) { e.Cancel = true; return; }
-
-            редактироватьToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 1;
-            удалитьToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 1;
-
-            перевестиДокументВАрхивToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 3;
-            сменитьНаСтатусНаОзнакомленииToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 1;
-            отозватьСнаОзнакомленииНановыйToolStripMenuItem.Enabled = ((Document)objSelectTag).id_Status == 2;           
-        }
-
-        private void журналСменыСтатусовДокументовToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btViewHisroty_Click(null, null);
-        }
-
+     
         private void trvPost_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode node = trvPost.SelectedNode;

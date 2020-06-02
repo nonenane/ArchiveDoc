@@ -51,7 +51,7 @@ namespace ArchiveDocExtensionsFile
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (DialogResult.OK == new frmAdd() { Text = "Добавить Тип документа" }.ShowDialog())
+            if (DialogResult.OK == new frmAdd() { Text = "Добавить расширение" }.ShowDialog())
                 get_data();
         }
 
@@ -60,7 +60,7 @@ namespace ArchiveDocExtensionsFile
             if (dgvData.CurrentRow != null && dgvData.CurrentRow.Index != -1 && dtData != null && dtData.DefaultView.Count != 0)
             {
                 DataRowView row = dtData.DefaultView[dgvData.CurrentRow.Index];
-                if (DialogResult.OK == new frmAdd() { Text = "Редактировать Тип документа", row = row }.ShowDialog())
+                if (DialogResult.OK == new frmAdd() { Text = "Редактировать расширение", row = row }.ShowDialog())
                     get_data();
             }
         }
