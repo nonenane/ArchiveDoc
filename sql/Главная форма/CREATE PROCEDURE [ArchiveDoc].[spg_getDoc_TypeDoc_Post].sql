@@ -30,8 +30,7 @@ select
 	td.ViewArchive,
 	td.npp,
 	dd.isBrowse,
-	dp.id_Departments
-	
+	dp.id_Departments	
 from 
 	ArchiveDoc.Documents_vs_DepartmentsPosts dd
 		left join ArchiveDoc.Departments_vs_Posts dp on dp.id = dd.id_DepartmentsPosts

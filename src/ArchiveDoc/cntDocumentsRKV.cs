@@ -116,30 +116,30 @@ namespace ArchiveDoc
             trvDeps.EndUpdate();
         }
 
-        private void addNote(int id_dep, TreeNode parentNote, DataTable dtIn)
-        {
-            EnumerableRowCollection<DataRow> rowCollect = dtIn.AsEnumerable().Where(r => r.Field<int>("id_Parent") == id_dep).OrderByDescending(r => r.Field<bool>("isTop"));
-            //if (rowCollect.Count() == 0) return null;
-            foreach (DataRow row in rowCollect)
-            {
-                TreeNode node = new TreeNode();
-                node.Text = (string)row["name"];
-                node.ImageIndex = 0;
-                addNotePost((Int16)row["id"], node);
-                //node.SelectedImageIndex = 1;
-                //if ((bool)row["isTop"]) node.BackColor = Color.Blue;
-                addNote((Int16)row["id"], node, dtIn);
-                //node.Text = (string)row["nameDeps"];
-                //node.Text = (string)row["nameDeps"];
-                //parentNote.Nodes.Add(node);
-                parentNote.Nodes.Add(node);
-            }
-            //return node;
-        }
+        //private void addNote(int id_dep, TreeNode parentNote, DataTable dtIn)
+        //{
+        //    EnumerableRowCollection<DataRow> rowCollect = dtIn.AsEnumerable().Where(r => r.Field<int>("id_Parent") == id_dep).OrderByDescending(r => r.Field<bool>("isTop"));
+        //    //if (rowCollect.Count() == 0) return null;
+        //    foreach (DataRow row in rowCollect)
+        //    {
+        //        TreeNode node = new TreeNode();
+        //        node.Text = (string)row["name"];
+        //        node.ImageIndex = 0;
+        //        addNotePost((Int16)row["id"], node);
+        //        //node.SelectedImageIndex = 1;
+        //        //if ((bool)row["isTop"]) node.BackColor = Color.Blue;
+        //        addNote((Int16)row["id"], node, dtIn);
+        //        //node.Text = (string)row["nameDeps"];
+        //        //node.Text = (string)row["nameDeps"];
+        //        //parentNote.Nodes.Add(node);
+        //        parentNote.Nodes.Add(node);
+        //    }
+        //    //return node;
+        //}
 
         private void addNotePost(int id_deps, TreeNode parentNote)
         {
-            EnumerableRowCollection<DataRow> rowCollect = dtPostVsDeps.AsEnumerable().Where(r => r.Field<int>("id_Departments") == id_deps);
+            EnumerableRowCollection<DataRow> rowCollect = dtPostVsDeps.AsEnumerable().Where(r => r.Field<int>("id_Departments") == id_deps && r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower()));
             if (rowCollect.Count() == 0) return;
 
             foreach (DataRow row in rowCollect)
@@ -196,7 +196,7 @@ namespace ArchiveDoc
             }
         }
 
-        private void newTableDepsForTree(DataTable dtDeps, DataTable dtPostvsDeps,DataTable dtDepsLinkToDep)
+        private void newTableDepsForTree(DataTable dtDeps, DataTable dtPostvsDeps, DataTable dtDepsLinkToDep)
         {
             DataTable dtTmp = new DataTable();
             //dtTmp.Columns.Add("id_Departments", typeof(int));
@@ -227,16 +227,70 @@ namespace ArchiveDoc
                 }
             }
 
-            foreach (DataRow row in dtDepsLinkToDep.Rows)
+
+
+
+            if (tbNameDeps.Text.Trim().Length != 0 || tbNamePosts.Text.Trim().Length != 0 || tbNameDocuments.Text.Trim().Length != 0)
             {
-                EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == (int)row["id_DepartmentsView"]);
-                if (rowCollect.Count() > 0)
+                filterTable(dtDeps, dtPostvsDeps, dtDepsLinkToDep);
+               // Task<DataTable> task = Config.hCntMain.getDoc_TypeDoc_Post(0, 0, false);
+               // task.Wait();
+
+                // if (tbNameDocuments.Text.Trim().Length > 0 && task.Result == null) return;
+
+                // var rowCollectDocument = task.Result.AsEnumerable()
+                //     .Where(r => r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower()) && r.Field<string>("nameDoc").ToLower().Contains(tbNameDocuments.Text.ToLower()))
+                //     .GroupBy(r => new { id_Departments = r.Field<int>("id_Departments") })
+                //     .Select(s => new { s.Key.id_Departments });                    
+
+                // var groupDepsVsPost_1 = dtPostvsDeps.AsEnumerable()
+                //     .Where(r => r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower()) && r.Field<string>("nameDeps").ToLower().Contains(tbNameDeps.Text.ToLower()))
+                //     .GroupBy(r => new { id_Departments = r.Field<int>("id_Departments") })
+                //.Select(s => new
+                //{
+                //    s.Key.id_Departments
+                //});
+
+                // if (tbNamePosts.Text.Trim().Length > 0)
+                // {
+                //     foreach (var gDepsv1 in groupDepsVsPost_1)
+                //     {
+                //         EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == gDepsv1.id_Departments);
+                //         if (rowCollect.Count() > 0)
+                //         {
+                //             rowCollect.First()["isUsed"] = true;
+                //         }
+                //     }
+                // }
+                // else
+                // {
+
+                //     foreach (DataRow row in dtDepsLinkToDep.Rows)
+                //     {
+                //         EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == (int)row["id_DepartmentsView"] && r.Field<string>("name").ToLower().Contains(tbNameDeps.Text.ToLower()));
+                //         if (rowCollect.Count() > 0)
+                //         {
+                //             rowCollect.First()["isUsed"] = true;
+                //         }
+                //     }
+                // }
+            }
+            else
+            {
+                foreach (DataRow row in dtDepsLinkToDep.Rows)
                 {
-                    rowCollect.First()["isUsed"] = true;
+                    EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == (int)row["id_DepartmentsView"]);
+                    if (rowCollect.Count() > 0)
+                    {
+                        rowCollect.First()["isUsed"] = true;
+                    }
                 }
             }
 
-            foreach (DataRow row in dtDeps.Copy().AsEnumerable().Where(r => r.Field<int>("id_Parent") != 0 && r.Field<bool>("isTop") && r.Field<bool>("isUsed")))
+
+            foreach (DataRow row in dtDeps.Copy().AsEnumerable().Where(r => r.Field<int>("id_Parent") != 0 
+            //&& r.Field<bool>("isTop") 
+            && r.Field<bool>("isUsed")))
             {
                 int id_Parent = (int)row["id_Parent"];
                 EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == id_Parent);
@@ -248,6 +302,91 @@ namespace ArchiveDoc
             }
 
 
+        }
+
+        private void filterTable(DataTable dtDeps, DataTable dtPostvsDeps, DataTable dtDepsLinkToDep)
+        {
+            if (tbNameDocuments.Text.Trim().Length > 0)
+            {
+                Task<DataTable> task = Config.hCntMain.getDoc_TypeDoc_Post(0, 0, false);
+                task.Wait();
+
+                if (tbNameDocuments.Text.Trim().Length > 0 && task.Result == null) return;
+
+                foreach (DataRow row in dtDepsLinkToDep.Rows)
+                {
+                    var rowCollectDocument = task.Result.AsEnumerable()
+                    .Where(r =>
+                            r.Field<int>("id_Departments") == (int)row["id_DepartmentsView"]
+                            && r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower())
+                            && r.Field<string>("nameDoc").ToLower().Contains(tbNameDocuments.Text.ToLower())
+                            && ((new List<int> { 4 }.Contains(r.Field<int>("id_Status")) && r.Field<bool>("ViewArchive")) || new List<int> { 2, 3 }.Contains(r.Field<int>("id_Status")))
+                            )
+                    .GroupBy(r => new { id_Departments = r.Field<int>("id_Departments") })
+                    .Select(s => new { s.Key.id_Departments });
+
+                    foreach (var gRDoc in rowCollectDocument)
+                    {
+                        var groupDepsVsPost_1 = dtPostvsDeps.AsEnumerable()
+                                     .Where(r =>
+                                        r.Field<int>("id_Departments") == gRDoc.id_Departments
+                                        && r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower())
+                                        && r.Field<string>("nameDeps").ToLower().Contains(tbNameDeps.Text.ToLower())
+                                        )
+                                     .GroupBy(r => new { id_Departments = r.Field<int>("id_Departments") })
+                                     .Select(s => new
+                                     {
+                                         s.Key.id_Departments
+                                     });
+
+                        foreach (var gDepsv1 in groupDepsVsPost_1)
+                        {
+                            EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == gDepsv1.id_Departments);
+                            if (rowCollect.Count() > 0)
+                            {
+                                rowCollect.First()["isUsed"] = true;
+                            }
+                        }
+                    }
+                }
+            }
+            else if (tbNamePosts.Text.Trim().Length > 0)
+            {
+                foreach (DataRow row in dtDepsLinkToDep.Rows)
+                {
+                    var groupDepsVsPost_1 = dtPostvsDeps.AsEnumerable()
+                    .Where(r =>
+                        r.Field<int>("id_Departments") == (int)row["id_DepartmentsView"]
+                        && r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower()) 
+                        && r.Field<string>("nameDeps").ToLower().Contains(tbNameDeps.Text.ToLower())
+                        )
+                    .GroupBy(r => new { id_Departments = r.Field<int>("id_Departments") })
+                    .Select(s => new
+                    {
+                          s.Key.id_Departments
+                    });
+
+                    foreach (var gDepsv1 in groupDepsVsPost_1)
+                    {
+                        EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == gDepsv1.id_Departments);
+                        if (rowCollect.Count() > 0)
+                        {
+                            rowCollect.First()["isUsed"] = true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (DataRow row in dtDepsLinkToDep.Rows)
+                {
+                    EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<Int16>("id") == (int)row["id_DepartmentsView"] && r.Field<string>("name").ToLower().Contains(tbNameDeps.Text.ToLower()));
+                    if (rowCollect.Count() > 0)
+                    {
+                        rowCollect.First()["isUsed"] = true;
+                    }
+                }
+            }
         }
 
         private void LinkToParent(int id_Parent, DataTable dtTmp, DataTable dtDeps)
@@ -338,6 +477,7 @@ namespace ArchiveDoc
             trvPost.BeginUpdate();
 
             var groupTypeDoc = dtDocuments.AsEnumerable()
+                .Where(r=> r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower()) && r.Field<string>("nameDoc").ToLower().Contains(tbNameDocuments.Text.ToLower()))
                 .GroupBy(r => new { id_TypeDoc = r.Field<int>("id_TypeDoc"), nameTypeDoc = r.Field<string>("nameTypeDoc"), isActive = r.Field<bool>("isActive"), npp = r.Field<int>("npp"), ViewArchive = r.Field<bool>("ViewArchive") })
                 .Select(s => new { s.Key.id_TypeDoc, s.Key.nameTypeDoc, s.Key.isActive, s.Key.npp,s.Key.ViewArchive })
                 .OrderBy(r => r.npp);
@@ -357,7 +497,11 @@ namespace ArchiveDoc
 
         private void addHeaderDoc(int idTypeDoc,TreeNode parentNode,bool ViewArchive)
         {
-            EnumerableRowCollection<DataRow> rowCollect = dtDocuments.AsEnumerable().Where(r => r.Field<int>("id_TypeDoc") == idTypeDoc && new List<int> { 2, 3 }.Contains(r.Field<int>("id_Status")));
+            EnumerableRowCollection<DataRow> rowCollect = dtDocuments.AsEnumerable()
+                .Where(r => r.Field<int>("id_TypeDoc") == idTypeDoc
+                && r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower())
+                && r.Field<string>("nameDoc").ToLower().Contains(tbNameDocuments.Text.ToLower())
+                && new List<int> { 2, 3 }.Contains(r.Field<int>("id_Status")));
             if (rowCollect.Count() > 0)
             {
                 TreeNode nodeActive = new TreeNode();
@@ -371,7 +515,11 @@ namespace ArchiveDoc
 
             if (ViewArchive)
             {
-                rowCollect = dtDocuments.AsEnumerable().Where(r => r.Field<int>("id_TypeDoc") == idTypeDoc && new List<int> { 4 }.Contains(r.Field<int>("id_Status")));
+                rowCollect = dtDocuments.AsEnumerable()
+                    .Where(r => r.Field<int>("id_TypeDoc") == idTypeDoc
+                    && r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower())
+                    && r.Field<string>("nameDoc").ToLower().Contains(tbNameDocuments.Text.ToLower())
+                    && new List<int> { 4 }.Contains(r.Field<int>("id_Status")));
                 if (rowCollect.Count() > 0)
                 {
                     TreeNode nodeArhive = new TreeNode();
@@ -386,8 +534,10 @@ namespace ArchiveDoc
 
         private void addPostDoc(TreeNode parentNode,DataTable dataTable)
         {
-            var groupPost = dataTable.AsEnumerable().GroupBy(r => new { namePost = r.Field<string>("namePost"), id_Posts = r.Field<int>("id_Posts") })
-                    .Select(s => new { s.Key.id_Posts, s.Key.namePost });
+            var groupPost = dataTable.AsEnumerable()
+                .Where(r=> r.Field<string>("namePost").ToLower().Contains(tbNamePosts.Text.ToLower()) && r.Field<string>("nameDoc").ToLower().Contains(tbNameDocuments.Text.ToLower()))
+                .GroupBy(r => new { namePost = r.Field<string>("namePost"), id_Posts = r.Field<int>("id_Posts") })
+                .Select(s => new { s.Key.id_Posts, s.Key.namePost });
 
             foreach (var gPost in groupPost)
             {
@@ -402,7 +552,7 @@ namespace ArchiveDoc
 
         private void addDoc(int id_Posts, TreeNode parentNode, DataTable dataTable)
         {
-            EnumerableRowCollection<DataRow> rowCollect = dataTable.AsEnumerable().Where(r => r.Field<int>("id_Posts") == id_Posts);
+            EnumerableRowCollection<DataRow> rowCollect = dataTable.AsEnumerable().Where(r => r.Field<int>("id_Posts") == id_Posts && r.Field<string>("nameDoc").ToLower().Contains(tbNameDocuments.Text.ToLower()));
             foreach (DataRow row in rowCollect)
             {
                 TreeNode node = new TreeNode();
@@ -577,7 +727,7 @@ namespace ArchiveDoc
 
         private void btFilter_Click(object sender, EventArgs e)
         {
-
+            getData();
         }
 
         private void btDropFilter_Click(object sender, EventArgs e)
@@ -585,6 +735,7 @@ namespace ArchiveDoc
             tbNameDeps.Clear();
             tbNameDocuments.Clear();
             tbNamePosts.Clear();
+            getData();
         }
      
         private void trvPost_AfterSelect(object sender, TreeViewEventArgs e)
