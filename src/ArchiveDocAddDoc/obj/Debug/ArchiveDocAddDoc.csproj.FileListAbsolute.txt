@@ -22,3 +22,24 @@ D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\MyMessageBox.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\MyMessageBox.dll.config
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.justification.frmAdd.resources
 D:\Работа\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.redoDocument.frmAdd.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\ArchiveDocAddDoc.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\ArchiveDocAddDoc.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\ArchiveDocAddDoc.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\MyMessageBox.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\Interop.Excel.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\EPPlus.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\Interop.WIA.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\Interop.Microsoft.Office.Core.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\stdole.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\MyMessageBox.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\bin\Debug\MyMessageBox.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.csprojAssemblyReference.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.frmAddDoc.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.frmSelectDocuments.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.justification.frmAdd.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.Properties.Resources.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.redoDocument.frmAdd.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.csproj.GenerateResource.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.csproj.CopyComplete
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocAddDoc\obj\Debug\ArchiveDocAddDoc.pdb

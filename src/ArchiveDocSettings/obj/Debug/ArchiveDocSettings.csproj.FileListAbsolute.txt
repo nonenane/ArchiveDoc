@@ -18,3 +18,21 @@ D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensions
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.dll.config
 D:\Работа\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.csprojAssemblyReference.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocSettings.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocSettings.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocSettings.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\Interop.Excel.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\EPPlus.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\Interop.WIA.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\Interop.Microsoft.Office.Core.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\stdole.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\bin\Debug\ArchiveDocExtensionsFile.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.csprojAssemblyReference.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.Properties.Resources.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.settings.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.csproj.GenerateResource.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.csproj.CopyComplete
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocSettings\obj\Debug\ArchiveDocSettings.pdb

@@ -16,3 +16,19 @@ D:\Работа\ArchiveDoc\src\ArchiveDocPost\bin\Debug\stdole.dll
 D:\Работа\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.csproj.CopyComplete
 D:\Работа\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.dll
 D:\Работа\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\bin\Debug\ArchiveDocPost.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\bin\Debug\ArchiveDocPost.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\bin\Debug\ArchiveDocPost.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\bin\Debug\Interop.Excel.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\bin\Debug\EPPlus.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\bin\Debug\Interop.WIA.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\bin\Debug\Interop.Microsoft.Office.Core.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\bin\Debug\stdole.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.csprojAssemblyReference.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.frmAdd.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.frmList.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.Properties.Resources.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.csproj.GenerateResource.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.csproj.CopyComplete
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocPost\obj\Debug\ArchiveDocPost.pdb

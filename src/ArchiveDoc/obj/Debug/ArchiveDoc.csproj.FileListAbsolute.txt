@@ -42,3 +42,44 @@ D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\MyMessageBox.dll
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\MyMessageBox.pdb
 D:\Работа\ArchiveDoc\src\ArchiveDoc\bin\Debug\MyMessageBox.dll.config
 D:\Работа\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.cntDocumentsRKV.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDoc.exe.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDoc.exe
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDoc.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocaTypeDoc.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocExtensionsFile.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocJournalStatusHistory.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocPost.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocSettings.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\MyMessageBox.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\Interop.Excel.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\EPPlus.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\Interop.WIA.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\Interop.Microsoft.Office.Core.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\stdole.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocAddDoc.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocaTypeDoc.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocaTypeDoc.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocExtensionsFile.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocExtensionsFile.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocJournalStatusHistory.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocJournalStatusHistory.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocPost.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocPost.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocReport.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocSettings.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\ArchiveDocSettings.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\MyMessageBox.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\MyMessageBox.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.csprojAssemblyReference.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.cntDocumentsRKV.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.cntDocuments.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.frmMain.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.Properties.Resources.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.csproj.GenerateResource.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.csproj.CopyComplete
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.exe
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.pdb

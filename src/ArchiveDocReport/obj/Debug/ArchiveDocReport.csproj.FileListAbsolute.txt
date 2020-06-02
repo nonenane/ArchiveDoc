@@ -15,3 +15,18 @@ D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.cspro
 D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csproj.CopyComplete
 D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.dll
 D:\Работа\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocReport.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocReport.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\ArchiveDocReport.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\Interop.Excel.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\EPPlus.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\Interop.WIA.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\Interop.Microsoft.Office.Core.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\bin\Debug\stdole.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csprojAssemblyReference.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.ctrReport.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.Properties.Resources.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csproj.GenerateResource.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.csproj.CopyComplete
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocReport\obj\Debug\ArchiveDocReport.pdb

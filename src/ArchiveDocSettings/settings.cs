@@ -22,6 +22,15 @@ namespace ArchiveDocSettings
 
             dgvExtension.AutoGenerateColumns = false;
             dgvData.AutoGenerateColumns = false;
+            dgvData.ReadOnly = !Nwuram.Framework.Settings.User.UserSettings.User.StatusCode.ToLower().Equals("адм");
+            dgvExtension.ReadOnly = !Nwuram.Framework.Settings.User.UserSettings.User.StatusCode.ToLower().Equals("адм");
+            btExtension.Visible = Nwuram.Framework.Settings.User.UserSettings.User.StatusCode.ToLower().Equals("адм");
+            if (!Nwuram.Framework.Settings.User.UserSettings.User.StatusCode.ToLower().Equals("адм"))
+                dgvExtension.Size = new Size(dgvExtension.Width, 449);
+
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(btExtension, "Справочник расширений файлов");
+
         }
 
         private void settings_Load(object sender, EventArgs e)

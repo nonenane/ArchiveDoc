@@ -48,7 +48,9 @@ namespace ArchiveDoc
             else
                 tpMain.Controls.Add(new cntDocuments() { Dock = DockStyle.Fill });
 
-            tpSettings.Controls.Add(new ArchiveDocSettings.settings() { Dock = DockStyle.Fill });
+            if (Nwuram.Framework.Settings.User.UserSettings.User.StatusCode.ToLower().Equals("адм"))
+                tpSettings.Controls.Add(new ArchiveDocSettings.settings() { Dock = DockStyle.Fill });
+
             tpReport.Controls.Add(new ArchiveDocReport.ctrReport() { Dock = DockStyle.Fill });
         }
      

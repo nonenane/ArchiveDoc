@@ -15,3 +15,18 @@ D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\Interop.
 D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\stdole.dll
 D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.csproj.CopyComplete
 D:\Работа\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.frmHistory.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\ArchiveDocJournalStatusHistory.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\ArchiveDocJournalStatusHistory.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\ArchiveDocJournalStatusHistory.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\Interop.Excel.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\EPPlus.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\Interop.WIA.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\Interop.Microsoft.Office.Core.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\bin\Debug\stdole.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.csprojAssemblyReference.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.frmHistory.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.Properties.Resources.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.csproj.GenerateResource.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.csproj.CopyComplete
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDocJournalStatusHistory\obj\Debug\ArchiveDocJournalStatusHistory.pdb
