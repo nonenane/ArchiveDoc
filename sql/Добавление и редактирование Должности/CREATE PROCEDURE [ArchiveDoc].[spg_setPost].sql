@@ -42,6 +42,9 @@ BEGIN TRY
 					set cName = @cName,isActive = @isActive,id_Editor = @id_user,DateEdit = GETDATE()
 					where id = @id
 
+					if(@isActive=0)
+						UPDATE [ArchiveDoc].[Departments_vs_Posts] SET isActive = 0, DateEdit = GETDATE(), id_Editor = @id_user where id_Posts = @id
+
 					SELECT @id as id
 					return;
 				END

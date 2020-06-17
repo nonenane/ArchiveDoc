@@ -107,10 +107,10 @@ namespace ArchiveDocPost
                 return;
             }
 
-            if (dtDeps == null) { MessageBox.Show("Нет данных по должностям.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
-            if (dtDeps.Rows.Count == 0) { MessageBox.Show("Нет данных по должностям.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            if (dtDeps == null) { MessageBox.Show("Нет данных по отдел.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            if (dtDeps.Rows.Count == 0) { MessageBox.Show("Нет данных по отделу.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
             EnumerableRowCollection<DataRow> rowCollect = dtDeps.AsEnumerable().Where(r => r.Field<bool>("isSelect"));
-            if (rowCollect.Count() == 0) { MessageBox.Show("Необходимо выбрать должность.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            if (rowCollect.Count() == 0) { MessageBox.Show("Необходимо выбрать отдел.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
             
             Task<DataTable> task = Config.hCntMain.setPost(id, tbName.Text.Trim(), true, false, 0);
@@ -159,7 +159,7 @@ namespace ArchiveDocPost
             foreach (int id in listDel)
             {
                 task = Config.hCntMain.setPostLinkDep(id, 0, 0, true, true, 1);
-                task.Wait();
+                task.Wait();                
             }
 
             foreach (DataRow row in rowCollect)

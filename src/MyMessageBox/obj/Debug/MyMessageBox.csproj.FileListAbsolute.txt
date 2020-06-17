@@ -8,3 +8,12 @@ D:\Работа\ArchiveDoc\src\MyMessageBox\bin\Debug\MyMessageBox.pdb
 D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.MyMessageBox.resources
 D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.dll
 D:\Работа\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\bin\Debug\MyMessageBox.dll.config
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\bin\Debug\MyMessageBox.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\bin\Debug\MyMessageBox.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.csprojAssemblyReference.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.MyMessageBox.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.Properties.Resources.resources
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.csproj.GenerateResource.cache
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\MyMessageBox\obj\Debug\MyMessageBox.pdb

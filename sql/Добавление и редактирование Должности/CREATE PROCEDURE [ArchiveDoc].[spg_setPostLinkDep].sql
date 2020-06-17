@@ -62,7 +62,11 @@ BEGIN TRY
 				END
 			ELSE
 				BEGIN
-					DELETE FROM [ArchiveDoc].[Departments_vs_Posts] where id = @id
+					
+					if exists (select top(1) id from [ArchiveDoc].[Documents_vs_DepartmentsPosts] where id_DepartmentsPosts = @id)
+						UPDATE [ArchiveDoc].[Departments_vs_Posts]  set isActive = 0,id_Editor =@id_user,DateEdit = GETDATE() where id = @id
+					else
+						DELETE FROM [ArchiveDoc].[Departments_vs_Posts] where id = @id
 					RETURN
 				END
 		END

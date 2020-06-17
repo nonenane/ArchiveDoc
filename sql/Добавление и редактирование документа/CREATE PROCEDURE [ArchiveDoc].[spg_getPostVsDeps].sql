@@ -24,7 +24,7 @@ select
 	cast(0 as int) as id_Status,
 	'' as nameStatus,
 	cast(0 as bit) as isBrowse,
-	dp.isActive
+	dp.isActive	
 from 
 	ArchiveDoc.Departments_vs_Posts dp
 		inner join ArchiveDoc.s_Posts p on p.id = dp.id_Posts

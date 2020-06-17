@@ -528,6 +528,7 @@ namespace ArchiveDoc
         private void btDictonaryTypeDoc_Click(object sender, EventArgs e)
         {
             new ArchiveDocaTypeDoc.frmList().ShowDialog();
+            getDataDocuments();
         }
 
         private void btOpenFile_Click(object sender, EventArgs e)
@@ -645,7 +646,7 @@ namespace ArchiveDoc
             if (objSelectTag == null) return;
             if (!(objSelectTag is Document)) return;
 
-            if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 2)) return;
+            //if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 2)) return;
 
             DialogResult dlgResult = new MyMessageBox.MyMessageBox("Вы хотите отозвать документ\n\"На ознакомление\" и сделать статус \"Новый\"?", "Отозвать документ", MyMessageBox.MessageBoxButtons.YesNo, new List<string> { "Да, отозвать", "Нет, не отзывать", "Отмена" }).ShowDialog();
             if (dlgResult == DialogResult.No) return;
@@ -676,6 +677,7 @@ namespace ArchiveDoc
         private void btDictonaryPost_Click(object sender, EventArgs e)
         {
             new ArchiveDocPost.frmList().ShowDialog();
+            getData();
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -748,7 +750,7 @@ namespace ArchiveDoc
 
             btEditDoc.Enabled = ((Document)objSelectTag).id_Status == 1;
             btDelDoc.Enabled = ((Document)objSelectTag).id_Status == 1;
-            btDown.Enabled = ((Document)objSelectTag).id_Status == 2;
+            btDown.Enabled = new List<int> { 1, 2 }.Contains(((Document)objSelectTag).id_Status);//== 2;
             btNext.Enabled = ((Document)objSelectTag).id_Status == 1;
             btToArchiv.Enabled = ((Document)objSelectTag).id_Status == 3;
             btOpenFile.Enabled = true;
