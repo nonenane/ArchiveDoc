@@ -83,3 +83,7 @@ C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\o
 C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.csproj.CopyComplete
 C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.exe
 C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\obj\Debug\ArchiveDoc.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\Framework.dll
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\Framework.pdb
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\Framework.xml
+C:\Old_Disk_D\spg\Проекты\договор 2695\ArchiveDoc\src\ArchiveDoc\bin\Debug\Framework.dll.config

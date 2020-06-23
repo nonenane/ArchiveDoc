@@ -54,7 +54,7 @@ namespace ArchiveDocAddDoc.justification
                 }
 
                 dtPostVsDeps.DefaultView.Sort = "isSelect desc, nameDeps asc, namePost asc";
-                dtPostVsDeps.DefaultView.RowFilter = "id_DocVsDepPosts > 0";
+                dtPostVsDeps.DefaultView.RowFilter = "id_DocVsDepPosts > 0 and id_Status = 3";
                 dtPostVsDeps = dtPostVsDeps.DefaultView.ToTable().Copy();
                 dgvData.DataSource = dtPostVsDeps;
             }

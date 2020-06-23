@@ -601,7 +601,7 @@ namespace ArchiveDoc
             if (objSelectTag == null) return;
             if (!(objSelectTag is Document)) return;
 
-            if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 3)) return;
+            //if (!transferDoc.getStatusDocuments(((Document)objSelectTag).id_document, 3)) return;
             //if (!transferDoc.setStatusDocument(((Document)objSelectTag).id_document, 4)) return;
 
             DialogResult dlgResult = new MyMessageBox.MyMessageBox("Вы хотите заменить помещаемый\n\"В архив\" документ на новый?", "Перевод документа в архив",

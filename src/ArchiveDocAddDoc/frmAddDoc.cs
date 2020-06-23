@@ -209,11 +209,11 @@ namespace ArchiveDocAddDoc
 
             if (id == 0)
             {
-                id = (int)dtResult.Rows[0]["id"];
-                Logging.StartFirstLevel(1);
-                Logging.Comment("Добавить Тип документа");
-                Logging.Comment($"ID: {id}");
-                Logging.Comment($"Наименование: {tbNameDoc.Text.Trim()}");
+                //id = (int)dtResult.Rows[0]["id"];
+                //Logging.StartFirstLevel(1);
+                //Logging.Comment("Добавить Тип документа");
+                //Logging.Comment($"ID: {id}");
+                //Logging.Comment($"Наименование: {tbNameDoc.Text.Trim()}");
                 //Logging.Comment($"Номер по порядку: {tbNpp.Text.Trim()}");
                 //Logging.Comment($"Отображение архивных документов у руководителя: {(chbViewArchive.Checked ? "Да" : "Нет")}");
                 //Logging.Comment($"Отображать при добавлении документа: {(chbViewAdd.Checked ? "Да" : "Нет")}");
@@ -221,10 +221,10 @@ namespace ArchiveDocAddDoc
             }
             else
             {
-                Logging.StartFirstLevel(1);
-                Logging.Comment("Редактировать Тип документа");
-                Logging.Comment($"ID: {id}");
-                Logging.VariableChange("Наименование", tbNameDoc.Text.Trim(), oldName);
+                //Logging.StartFirstLevel(1);
+                //Logging.Comment("Редактировать Тип документа");
+                //Logging.Comment($"ID: {id}");
+                //Logging.VariableChange("Наименование", tbNameDoc.Text.Trim(), oldName);
                 //Logging.VariableChange("Номер по порядку", tbNpp.Text.Trim(), oldNpp);
                 //Logging.VariableChange($"Отображение архивных документов у руководителя:", (chbViewArchive.Checked ? "Да" : "Нет"), (oldViewArchive ? "Да" : "Нет"));
                 //Logging.VariableChange($"Отображать при добавлении документа:", (chbViewAdd.Checked ? "Да" : "Нет"), (oldViewAdd ? "Да" : "Нет"));

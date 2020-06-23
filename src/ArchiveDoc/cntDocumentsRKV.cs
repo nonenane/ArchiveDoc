@@ -557,7 +557,11 @@ namespace ArchiveDoc
                 Process.Start(Application.StartupPath + @"\tmp\" + fileName);
 
                 if (((Document)objSelectTag).isWorkDep)
+                {
                     if (!transferDoc.setBrowseDocument(((Document)objSelectTag).id_documentVsPost)) return;
+
+                    ((Document)objSelectTag).isBrowse = true;
+                }
             }
         }
 

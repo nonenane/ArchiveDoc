@@ -149,7 +149,7 @@ namespace ArchiveDocAddDoc
                 task = Config.hCntMain.setDocuments(id_Documents, "", "", null, 0, true, 1);
                 task.Wait();
 
-                if (task.Result == null || task.Result.Rows.Count > 0)
+                if (task.Result == null || (task.Result.Rows.Count > 0 && (int)task.Result.Rows[0]["id"]<0))
                 {
                     MessageBox.Show(Config.centralText("При сохранение данных возникли ошибки записи.\nОбратитесь в ОЭЭС\n"), "Сохранение данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;

@@ -70,7 +70,18 @@ namespace ArchiveDocAddDoc
             task.Wait();
             dtData = task.Result;
             setFilter();
-            dgvData.DataSource = dtData;
+            //dgvData.DataSource = dtData;
+
+            //var dtGrouping = dtData.DefaultView.ToTable().AsEnumerable().GroupBy(r => new { id = r.Field<int>("id"), cName = r.Field<string>("cName"), FileName = r.Field<string>("FileName"), nameTypeDoc = r.Field<string>("nameTypeDoc") })
+            //    .Select(s => new
+            //    {
+            //        s.Key.cName,
+            //        s.Key.id,
+            //        s.Key.FileName,
+            //        s.Key.nameTypeDoc
+            //    }).ToList();
+
+            //dgvData.DataSource = dtGrouping;
         }
 
         private void dgvData_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
@@ -138,6 +149,18 @@ namespace ArchiveDocAddDoc
                 dtData.DefaultView.RowFilter = "id = - 1";
             }
             finally {
+
+                var dtGrouping = dtData.DefaultView.ToTable().AsEnumerable().GroupBy(r => new { id = r.Field<int>("id"), cName = r.Field<string>("cName"), FileName = r.Field<string>("FileName"), nameTypeDoc = r.Field<string>("nameTypeDoc") })
+                .Select(s => new
+                {
+                    s.Key.cName,
+                    s.Key.id,
+                    s.Key.FileName,
+                    s.Key.nameTypeDoc
+                }).ToList();
+
+                dgvData.DataSource = dtGrouping;
+
                 btSave.Enabled = dtData.DefaultView.Count != 0;
             }
         }

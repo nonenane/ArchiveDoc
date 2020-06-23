@@ -86,6 +86,8 @@ BEGIN TRY
 					DELETE FROM ArchiveDoc.Documents_vs_DepartmentsPosts where id_Documents = @id
 					DELETE FROM [ArchiveDoc].[s_Documents] where id = @id
 					
+					select 0 as id
+
 					RETURN
 				END
 		END
