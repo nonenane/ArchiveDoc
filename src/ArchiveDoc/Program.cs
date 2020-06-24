@@ -6,6 +6,8 @@ using Nwuram.Framework.Settings.Connection;
 using System.Threading.Tasks;
 using System.Data;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace ArchiveDoc
 {
@@ -43,6 +45,23 @@ namespace ArchiveDoc
                     Logging.StopFirstLevel();
 
                     Project.clearBufferFiles();
+
+                    string[] allFoundFiles = Directory.GetFiles(Application.StartupPath + @"\tmp\");
+                    if (allFoundFiles.Count() > 0)
+                    {
+                        foreach (string file in allFoundFiles)
+                        {
+                            try
+                            {
+                                FileInfo newFile = new FileInfo(file.ToString());
+                                newFile.Delete();
+                            }
+                            catch { };
+                        }
+                    }
+
+                    
+
                 }
         }
     }

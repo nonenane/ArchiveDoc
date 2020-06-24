@@ -553,7 +553,11 @@ namespace ArchiveDoc
                 string fileName = (string)task.Result.Rows[0]["FileName"];
                 if (!Directory.Exists(Application.StartupPath + @"\tmp\"))
                     Directory.CreateDirectory(Application.StartupPath + @"\tmp\");
-                File.WriteAllBytes(Application.StartupPath + @"\tmp\" + fileName, file);
+
+                if (!File.Exists(Application.StartupPath + @"\tmp\" + fileName))
+                {
+                    File.WriteAllBytes(Application.StartupPath + @"\tmp\" + fileName, file);                    
+                }
                 Process.Start(Application.StartupPath + @"\tmp\" + fileName);
 
                 if (((Document)objSelectTag).isWorkDep)
@@ -561,6 +565,8 @@ namespace ArchiveDoc
                     if (!transferDoc.setBrowseDocument(((Document)objSelectTag).id_documentVsPost)) return;
 
                     ((Document)objSelectTag).isBrowse = true;
+                    btNext.Enabled = ((Document)objSelectTag).id_Status == 2 && ((Document)objSelectTag).isBrowse && ((Document)objSelectTag).isWorkDep;
+
                 }
             }
         }

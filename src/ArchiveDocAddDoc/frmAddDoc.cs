@@ -209,7 +209,7 @@ namespace ArchiveDocAddDoc
 
             if (id == 0)
             {
-                //id = (int)dtResult.Rows[0]["id"];
+                id = (int)dtResult.Rows[0]["id"];
                 //Logging.StartFirstLevel(1);
                 //Logging.Comment("Добавить Тип документа");
                 //Logging.Comment($"ID: {id}");
@@ -217,7 +217,7 @@ namespace ArchiveDocAddDoc
                 //Logging.Comment($"Номер по порядку: {tbNpp.Text.Trim()}");
                 //Logging.Comment($"Отображение архивных документов у руководителя: {(chbViewArchive.Checked ? "Да" : "Нет")}");
                 //Logging.Comment($"Отображать при добавлении документа: {(chbViewAdd.Checked ? "Да" : "Нет")}");
-                Logging.StopFirstLevel();
+                //Logging.StopFirstLevel();
             }
             else
             {
@@ -229,7 +229,7 @@ namespace ArchiveDocAddDoc
                 //Logging.VariableChange($"Отображение архивных документов у руководителя:", (chbViewArchive.Checked ? "Да" : "Нет"), (oldViewArchive ? "Да" : "Нет"));
                 //Logging.VariableChange($"Отображать при добавлении документа:", (chbViewAdd.Checked ? "Да" : "Нет"), (oldViewAdd ? "Да" : "Нет"));
 
-                Logging.StopFirstLevel();
+                //Logging.StopFirstLevel();
             }
 
             foreach (int id_DocVsDepPosts in listDelPost)
